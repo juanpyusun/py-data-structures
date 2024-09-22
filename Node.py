@@ -1,99 +1,117 @@
-# Clase Nodo, cada elemento de la LinkedList
-class Node:
-    
-    def __init__(self, initdata):
-        """
-        Initializes a new node with the provided data and sets the next node to None.
+from typing import Optional
 
-        :param initdata: The data to be stored in the node.
-        """
+class Node:    
+    def __init__(self, initdata)->None:
         self.__data = initdata  # Using __data to indicate it's a "private" attribute
         self.__next = None      # The next node is initialized as None
 
     @property
-    def data(self):
+    def data(self)->int|str:
         """
-        Gets the data of the node.
+        Returns the data stored in the node.
 
-        :return: The data stored in the node.
+        Returns:
+            int | str: The data stored in the node, which can be either an integer or a string.
         """
         return self.__data
 
     @data.setter
-    def data(self, newdata):
+    def data(self, newdata:int|str)->None:
         """
-        Sets the data of the node to the provided new value.
+        Sets the data for the node.
 
-        :param newdata: The new value to be assigned to the node's data.
+        Args:
+            newdata (int | str): The new data to be set for the node. It can be either an integer or a string.
+
+        Returns:
+            None
         """
         self.__data = newdata
 
     @property
-    def next(self):
+    def next(self)->Optional['Node']:
         """
-        Gets the next node.
+        Returns the next node in the collection.
 
-        :return: The next node in the list.
+        Returns:
+            Optional[Node]: The next node if it exists, otherwise None.
         """
         return self.__next
 
     @next.setter
-    def next(self, newnext):
+    def next(self, newnext:Optional['Node'])->None:
         """
-        Sets the next node to the provided node.
+        Sets the next node in the linked list.
 
-        :param newnext: The node to be assigned as the next node.
+        Args:
+            newnext (Optional['Node']): The node to set as the next node.
+
+        Returns:
+            None
         """
         self.__next = newnext
 
-    def __repr__(self):
+    def __repr__(self)->str:
         """
-        Returns a string representation of the node.
+        Return a string representation of the Node object.
 
-        :return: A string showing the data of the node.
+        Returns:
+            str: A string in the format "Node(data=<data>)" where <data> is the value stored in the node.
         """
         return f"Node(data={self.__data})"
 
-    def __str__(self):
+    def __str__(self)->str:
         """
-        Returns a human-readable string of the node.
+        Returns a string representation of the Node object.
 
-        :return: A representative string of the node.
+        Returns:
+            str: A string describing the Node with its data.
         """
-        return f"Node with data: {self.__data}"
+        return f"Node(data={self.__data})"
 
-    def __eq__(self, other):
+    def __eq__(self, other: 'Node')->bool:
         """
-        Compares this node with another node by their data.
+        Compare this Node with another Node for equality.
 
-        :param other: The other node to compare.
-        :return: True if the nodes have the same data, False otherwise.
+        Args:
+            other (Node): The other Node to compare against.
+
+        Returns:
+            bool: True if the data of both Nodes are equal, False otherwise.
         """
         if isinstance(other, Node):
             return self.__data == other.data
         return NotImplemented
 
-    def __ne__(self, other):
+    def __ne__(self, other: 'Node')->bool:
         """
-        Compares this node with another node for inequality based on their data.
+        Check if this Node is not equal to another Node.
 
-        :param other: The other node to compare.
-        :return: True if the nodes have different data, False otherwise.
+        Args:
+            other (Node): The other Node to compare against.
+
+        Returns:
+            bool: True if the Nodes are not equal, False otherwise.
         """
         return not self.__eq__(other)
 
-    def __hash__(self):
+    def __hash__(self)->int:
         """
-        Returns a hash of the node based on its data.
+        Returns the hash value of the node based on its data.
 
-        :return: A hash value representing the node's data.
+        This method allows the node to be used in hash-based collections
+        such as sets and dictionaries.
+
+        Returns:
+            int: The hash value of the node's data.
         """
         return hash(self.__data)
 
-    def __len__(self):
+    def __len__(self)->int:
         """
-        Returns the size of the node, which is constant.
+        Return the length of the node.
 
-        :return: Always returns 1, as a node represents a single element.
+        Returns:
+            int: The length of the node, which is always 1.
         """
         return 1
