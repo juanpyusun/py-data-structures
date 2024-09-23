@@ -243,6 +243,154 @@ class LinkedList:
             self.__tail = None
 
         return temp
+# ------------------------------
+    def __two_pointer_method(self):
+        slow_pointer = self.head
+        fast_pointer = self.head
+        
+        while fast_pointer and fast_pointer.next:
+            slow_pointer = slow_pointer.next
+            fast_pointer = fast_pointer.next.next
+            yield slow_pointer, fast_pointer  # Generador que devuelve ambos punteros
+
+    def find_middle_node(self):
+        for slow, fast in self.__two_pointer_method():
+            pass  # Solo necesitamos el valor de slow al final
+        return slow
+
+    def has_loop(self):
+        for slow, fast in self.__two_pointer_method():
+            if slow is fast:
+                return True
+        return False
+
+    def find_kth_from_end(self, k):
+        slow = self.head
+        fast = self.head
+
+        # Mover el puntero rápido k nodos adelante
+        for _ in range(k):
+            if fast is None:
+                return None  # La lista es más corta que k nodos
+            fast = fast.next
+
+        # Mover ambos punteros hasta que fast alcance el final
+        while fast:
+            slow = slow.next
+            fast = fast.next
+
+        return slow 
+
+	def partition_list(self, x):
+        # If the list is empty, return immediately
+        if self.head is None:
+            return
+        
+        # Create two dummy nodes
+        dummy1 = Node(0)  # For nodes < x
+        dummy2 = Node(0)  # For nodes >= x
+        
+        prev1 = dummy1  # Pointer for the lesser list
+        prev2 = dummy2  # Pointer for the greater or equal list
+        
+        current = self.head
+        while current:
+            if current.value < x:
+                prev1.next = current  # Link to the lesser list
+                prev1 = prev1.next
+            else:
+                prev2.next = current  # Link to the greater or equal list
+                prev2 = prev2.next
+            current = current.next
+        
+        # Connect the two lists
+        prev1.next = dummy2.next  # Link the end of the lesser list to the start of the greater list
+        prev2.next = None  # End the greater list
+        
+        # Update the head of the original list
+        self.head = dummy1.next
+
+	 # Update the tail of the list
+    if prev2 != dummy2:  # If there are nodes in the greater or equal list
+        self.tail = prev2  # The tail is the last node of the greater or equal list
+    else:
+        self.tail = prev1  # If there are no nodes greater or equal, the tail is the last node of the lesser list
+
+def remove_duplicates(self):
+    current = self.head
+    prev = None
+    seen = set()  # Set to track seen values
+
+    while current:
+        if current.value in seen:
+            # If value is a duplicate, skip the current node
+            prev.next = current.next
+        else:
+            # If value is not a duplicate, add it to the set and move prev
+            seen.add(current.value)
+            prev = current
+        
+        # Move to the next node
+        current = current.next
+    
+    # Update tail to the last unique node
+    if prev:  # Ensure that there was at least one unique node
+        self.tail = prev
+    else:
+        self.tail = None  # If no unique nodes, set tail to None
+
+   def binary_to_decimal(self):
+        current = self.head
+        decimal_value = 0
+        position = 0
+
+        while current:
+            decimal_value += current.value * (2 ** (self.length - position - 1))
+            position += 1
+            current = current.next
+
+        return decimal_value
+
+    def reverse_between(self, start_index, end_index):
+        if not self.head or start_index == end_index:
+            return None
+        
+        # Dummy node to handle edge cases like reversing from the head
+        dummy = Node(0)
+        dummy.next = self.head
+        prev = dummy
+        
+        # Move `prev` to the node just before the start_index
+        for _ in range(start_index):
+            prev = prev.next
+
+        # `start` will be the first node to reverse
+        start = prev.next
+        # `then` will point to the node that will be reversed
+        then = start.next
+
+        # Reverse the sublist
+        for _ in range(end_index - start_index):
+            start.next = then.next  # Change next of start
+            then.next = prev.next  # Move `then` to the front of the sublist
+            prev.next = then  # Connect `prev` to `then`
+            then = start.next  # Update `then` to the next node to reverse
+
+        # Update the head if necessary
+        self.head = dummy.next
+
+	  # Update tail
+        if self.head is None:  # If the list is empty
+            self.tail = None
+        else:
+            # Traverse to get the new tail
+            current = self.head
+            while current.next:
+                current = current.next
+            self.tail = current  # Set tail to the last node
+    
+
+# -------------------------------
 
     def __str__(self)->str:
         """
