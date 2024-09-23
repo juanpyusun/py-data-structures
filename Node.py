@@ -3,8 +3,32 @@ from typing import Optional
 class Node:    
     def __init__(self, initdata)->None:
         self.__data = initdata  # Using __data to indicate it's a "private" attribute
-        self.__next = None      # The next node is initialized as None
+        self.__next = None # The next node is initialized as None
+        self.__prev = None # The previous node is initialized as None
+        
+    @property
+    def prev(self) -> Optional['Node']:
+        """
+        Returns the previous node in the collection.
 
+        Returns:
+            Optional[Node]: The previous node if it exists, otherwise None.
+        """
+        return self.__prev
+
+    @prev.setter
+    def prev(self, newprev: Optional['Node']) -> None:
+        """
+        Sets the previous node in the linked list.
+
+        Args:
+            newprev (Optional['Node']): The node to set as the previous node.
+
+        Returns:
+            None
+        """
+        self.__prev = newprev
+        
     @property
     def data(self)->int|str:
         """

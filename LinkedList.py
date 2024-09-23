@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Generator
 from Node import Node
 
 class LinkedList:
@@ -17,15 +17,15 @@ class LinkedList:
             __tail (Node or None): The tail node of the LinkedList.
             __length (int): The number of nodes in the LinkedList.
         """
-        if value is None:
-            self.__head = None
-            self.__tail = None
-            self.__length = 0
-        else:
+        if value:
             new_node = Node(value)
             self.__head = new_node
             self.__tail = new_node
             self.__length = 1
+        else:
+            self.__head = None
+            self.__tail = None
+            self.__length = 0
 
     @property
     def head(self)->Optional[Node]:
@@ -243,30 +243,69 @@ class LinkedList:
             self.__tail = None
 
         return temp
-# ------------------------------
-    def __two_pointer_method(self):
-        slow_pointer = self.head
-        fast_pointer = self.head
+
+    def __two_pointer_method(self)->Generator[tuple[Node, Node], None, None]:
+        """
+        A generator method that implements the two-pointer technique to traverse the linked list.
+        Yields:
+            tuple[Node, Node]: A tuple containing the slow pointer and the fast pointer.
+                - slow_pointer: Moves one step at a time.
+                - fast_pointer: Moves two steps at a time.
+        """
+        slow_pointer = self.__head
+        fast_pointer = self.__head
         
         while fast_pointer and fast_pointer.next:
             slow_pointer = slow_pointer.next
             fast_pointer = fast_pointer.next.next
             yield slow_pointer, fast_pointer  # Generador que devuelve ambos punteros
 
-    def find_middle_node(self):
+    def find_middle_node(self)->Optional[Node]:
+        """
+        Finds the middle node of the linked list using the two-pointer method.
+
+        This method uses two pointers, `slow` and `fast`, where `slow` moves one step
+        at a time and `fast` moves two steps at a time. When `fast` reaches the end
+        of the list, `slow` will be at the middle node.
+
+        Returns:
+            Optional[Node]: The middle node of the linked list, or None if the list is empty.
+        """
         for slow, fast in self.__two_pointer_method():
             pass  # Solo necesitamos el valor de slow al final
         return slow
 
-    def has_loop(self):
+    def has_loop(self)->bool:
+        """
+        Determines if the linked list contains a loop.
+
+        This method uses the two-pointer technique (Floyd's Tortoise and Hare algorithm)
+        to detect if there is a cycle in the linked list. If the slow pointer and the 
+        fast pointer meet at some point, it indicates the presence of a loop.
+
+        Returns:
+            bool: True if a loop is detected, False otherwise.
+        """
         for slow, fast in self.__two_pointer_method():
             if slow is fast:
                 return True
         return False
 
-    def find_kth_from_end(self, k):
-        slow = self.head
-        fast = self.head
+    def find_kth_from_end(self, k: int) -> Optional[Node]:
+        """
+        Finds the k-th node from the end of the linked list.
+        This method uses two pointers to find the k-th node from the end of the list.
+        The `fast` pointer is moved k nodes ahead of the `slow` pointer. Then, both
+        pointers are moved one node at a time until the `fast` pointer reaches the end
+        of the list. At this point, the `slow` pointer will be at the k-th node from the end.
+        Args:
+            k (int): The position from the end of the list to find the node.
+        Returns:
+            Optional[Node]: The k-th node from the end of the list, or None if the list
+                            has fewer than k nodes.
+        """
+        slow = self.__head
+        fast = self.__head
 
         # Mover el puntero rápido k nodos adelante
         for _ in range(k):
@@ -281,10 +320,23 @@ class LinkedList:
 
         return slow 
 
-	def partition_list(self, x):
+    def partition_list(self, x: int) -> None:
+        """
+        Rearranges the linked list such that all nodes with values less than `x` come before nodes with values 
+        greater than or equal to `x`. The relative order of nodes in each partition is preserved.
+        Args:
+            x (int): The partitioning value.
+        Returns:
+            None: This method modifies the list in place and does not return a value.
+        Notes:
+            - If the list is empty, the method returns immediately.
+            - Two dummy nodes are used to create two separate lists: one for nodes with values less than `x` 
+              and one for nodes with values greater than or equal to `x`.
+            - The two lists are then connected, and the head and tail of the original list are updated accordingly.
+        """
         # If the list is empty, return immediately
-        if self.head is None:
-            return
+        if self.__head is None:
+            return None
         
         # Create two dummy nodes
         dummy1 = Node(0)  # For nodes < x
@@ -293,7 +345,7 @@ class LinkedList:
         prev1 = dummy1  # Pointer for the lesser list
         prev2 = dummy2  # Pointer for the greater or equal list
         
-        current = self.head
+        current = self.__head
         while current:
             if current.value < x:
                 prev1.next = current  # Link to the lesser list
@@ -308,39 +360,54 @@ class LinkedList:
         prev2.next = None  # End the greater list
         
         # Update the head of the original list
-        self.head = dummy1.next
+        self.__head = dummy1.next
 
-	 # Update the tail of the list
-    if prev2 != dummy2:  # If there are nodes in the greater or equal list
-        self.tail = prev2  # The tail is the last node of the greater or equal list
-    else:
-        self.tail = prev1  # If there are no nodes greater or equal, the tail is the last node of the lesser list
-
-def remove_duplicates(self):
-    current = self.head
-    prev = None
-    seen = set()  # Set to track seen values
-
-    while current:
-        if current.value in seen:
-            # If value is a duplicate, skip the current node
-            prev.next = current.next
+        # Update the tail of the list
+        if prev2 != dummy2:  # If there are nodes in the greater or equal list
+            self.tail = prev2  # The tail is the last node of the greater or equal list
         else:
-            # If value is not a duplicate, add it to the set and move prev
-            seen.add(current.value)
-            prev = current
-        
-        # Move to the next node
-        current = current.next
-    
-    # Update tail to the last unique node
-    if prev:  # Ensure that there was at least one unique node
-        self.tail = prev
-    else:
-        self.tail = None  # If no unique nodes, set tail to None
+            self.tail = prev1  # If there are no nodes greater or equal, the tail is the last node of the lesser list
 
-   def binary_to_decimal(self):
-        current = self.head
+    def remove_duplicates(self) -> None:
+        """
+        Removes duplicate values from the linked list. This method traverses the
+        linked list, keeping track of seen values using a set. If a duplicate value
+        is found, the corresponding node is skipped. The method updates the tail
+        to the last unique node found.
+        Returns:
+            None
+        """
+        current = self.__head
+        prev = None
+        seen = set()  # Set to track seen values
+
+        while current:
+            if current.value in seen:
+                # If value is a duplicate, skip the current node
+                prev.next = current.next
+            else:
+                # If value is not a duplicate, add it to the set and move prev
+                seen.add(current.value)
+                prev = current
+            
+            # Move to the next node
+            current = current.next
+        
+        # Update tail to the last unique node
+        if prev:  # Ensure that there was at least one unique node
+            self.tail = prev
+        else:
+            self.tail = None  # If no unique nodes, set tail to None
+
+    def binary_to_decimal(self)->int:
+        """
+        Converts a binary number represented by the linked list into its decimal equivalent.
+        The linked list is assumed to represent a binary number where each node contains a single binary digit (0 or 1).
+        The head of the linked list represents the most significant bit (MSB).
+        Returns:
+            int: The decimal equivalent of the binary number.
+        """
+        current = self.__head
         decimal_value = 0
         position = 0
 
@@ -351,13 +418,28 @@ def remove_duplicates(self):
 
         return decimal_value
 
-    def reverse_between(self, start_index, end_index):
-        if not self.head or start_index == end_index:
+    def reverse_between(self, start_index:int, end_index:int)->None:
+        """
+        Reverse the nodes of the linked list from start_index to end_index.
+        This method reverses the nodes in the linked list between the given
+        start_index and end_index (inclusive). The indices are zero-based.
+        Args:
+            start_index (int): The starting index of the sublist to reverse.
+            end_index (int): The ending index of the sublist to reverse.
+        Returns:
+            None: This method does not return any value.
+        Raises:
+            IndexError: If start_index or end_index is out of bounds.
+        Example:
+            Given the linked list: 1 -> 2 -> 3 -> 4 -> 5
+            Calling reverse_between(1, 3) will modify the list to: 1 -> 4 -> 3 -> 2 -> 5
+        """
+        if not self.__head or start_index == end_index:
             return None
         
         # Dummy node to handle edge cases like reversing from the head
         dummy = Node(0)
-        dummy.next = self.head
+        dummy.next = self.__head
         prev = dummy
         
         # Move `prev` to the node just before the start_index
@@ -377,20 +459,17 @@ def remove_duplicates(self):
             then = start.next  # Update `then` to the next node to reverse
 
         # Update the head if necessary
-        self.head = dummy.next
+        self.__head = dummy.next
 
 	  # Update tail
-        if self.head is None:  # If the list is empty
+        if self.__head is None:  # If the list is empty
             self.tail = None
         else:
             # Traverse to get the new tail
-            current = self.head
+            current = self.__head
             while current.next:
                 current = current.next
             self.tail = current  # Set tail to the last node
-    
-
-# -------------------------------
 
     def __str__(self)->str:
         """
