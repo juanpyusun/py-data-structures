@@ -260,6 +260,71 @@ class DoublyLinkedList:
             return True
         return False
     
+    def swap_first_last(self):
+        if self.head and self.tail:
+            self.head.value, self.tail.value = self.tail.value, self.head.value 
+
+    def reverse(self):
+        if self.length == 0:
+            return
+        
+        current = self.head
+        previous = None
+        self.tail = current  # Update tail to the current head before reversing
+        
+        while current:
+            next_node = current.next  # Store the next node
+            current.next = previous    # Reverse the next pointer
+            current.prev = next_node   # Reverse the prev pointer
+            previous = current         # Move previous to current
+            current = next_node        # Move to the next node
+        
+        self.head = previous  # Update head to the last node processed
+	  return True
+
+    def is_palindrome(self):
+        if self.length == 0:
+            return True  # An empty list is a palindrome
+        if self.length == 1:
+            return True  # A single node is a palindrome
+        
+        left = self.head
+        right = self.tail
+
+        while left != right and left.prev != right:  # Check until the pointers meet
+            if left.value != right.value:
+                return False  # Values don't match
+            left = left.next
+            right = right.prev
+        
+        return True
+
+    def swap_pairs(self):
+        if self.head is None or self.head.next is None:
+            return  # No swap needed for empty or single-node lists
+
+        current = self.head
+        
+        # Initialize a pointer for the new head if the list has more than one node
+        if current.next is self.tail:
+            self.tail = current
+        
+        while current and current.next:
+            # Swap values of the current node and the next node
+            current.value, current.next.value = current.next.value, current.value
+            
+            # Move to the next pair (two nodes ahead)
+            current = current.next.next
+            
+            # If current is None, we've reached the end
+            if current is None:
+                break
+            
+            # Update tail if we reach the end of the list
+            if current.next is None:
+                self.tail = current.prev
+    
+
     def __str__(self)->str:
         """
         Returns a string representation of the doubly linked list.
