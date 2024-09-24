@@ -64,13 +64,13 @@
 
 # Resumen de Complejidad temporal y estructuras lineales - Tabla comparativa
 
-| Operations | Description | LIST | LL | Stack | Queue |
-| :-: | :-: | :-: | :-: | :-: | :-: |
-| append | add tail | `O(1)` | `O(1)` | `O()` | `O()` |
-| pop | remove tail | `O(1)` | `O(n)` | `O()` | `O()` |
-| prepend | add head | `O(n)` | `O(1)` | `O()` | `O()` |
-| pop first | remove head  | `O(n)` | `O(1)` | `O()` | `O()` |
-| insert | add i | `O(n)` | `O(n)` | `O()` | `O()` |
-| remove | remove i | `O(n)` | `O(n)` | `O()` | `O()` |
-| Lookup by index | - | `O(1)` | `O(n)` | `O()` | `O()` |
-| Lookup by Value | - | `O(n)` | `O(n)` | `O()` | `O()` |
+| Operations | Description | LIST | LL | DLL | Stack | Queue |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| append | add tail | `O(1)` | `O(1)` | `O(1)` | `O(1)` | `O(1)` |
+| pop | remove tail | `O(1)` | `O(n)` | `O(1)` | `O(1)` | `O(n)` |
+| prepend | add head | `O(n)` | `O(1)` | `O(1)` | `O(n)` | `O(n)` |
+| pop first | remove head  | `O(n)` | `O(1)` | `O(1)` | `O(n)` | `O(1)` |
+| insert | add i | `O(n)` | `O(n)` | `O(n)` | `O(n)` | `O(n)` |
+| remove | remove i | `O(n)` | `O(n)` | `O(n)` | `O(n)` | `O(n)` |
+| Lookup by index | - | `O(1)` | `O(n)` | `O(n)` | `O(n)` | `O(n)` |
+| Lookup by Value | - | `O(n)` | `O(n)` | `O(n)` | `O(n)` | `O(n)` |
