@@ -158,15 +158,14 @@ class LinkedList:
         self.__length -= 1
         return temp
 
-    def reverse(self)->None:
-        def reverse(self) -> None:
-            """
-            Reverses the linked list in place.
-            This method swaps the head and tail of the linked list and then iteratively
-            reverses the direction of the links between the nodes.
-            Returns:
-                None
-            """
+    def reverse(self) -> None:
+        """
+        Reverses the linked list in place.
+        This method swaps the head and tail of the linked list and then iteratively
+        reverses the direction of the links between the nodes.
+        Returns:
+            None
+        """
         temp = self.__head
         self.__head, self.__tail = self.__tail, self.__head
         
