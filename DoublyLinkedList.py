@@ -260,17 +260,31 @@ class DoublyLinkedList:
             return True
         return False
     
-    def swap_first_last(self):
-        if self.head and self.tail:
-            self.head.value, self.tail.value = self.tail.value, self.head.value 
+    def swap_first_last(self)->None:
+        """
+        Swap the values of the first (head) and last (tail) nodes in the doubly linked list.
 
-    def reverse(self):
-        if self.length == 0:
-            return
+        This method checks if both the head and tail nodes exist in the list. If they do,
+        it swaps their values.
+
+        Returns:
+            None
+        """
+        if self.head and self.tail:
+            self.head.data, self.tail.data = self.tail.data, self.head.data 
+
+    def reverse(self)->bool:
+        """
+        Reverses the doubly linked list in place.
+        Returns:
+            bool: True if the list was successfully reversed, None if the list is empty.
+        """
+        if self.__length == 0:
+            return None
         
-        current = self.head
+        current = self.__head
         previous = None
-        self.tail = current  # Update tail to the current head before reversing
+        self.__tail = current  # Update tail to the current head before reversing
         
         while current:
             next_node = current.next  # Store the next node
@@ -279,39 +293,54 @@ class DoublyLinkedList:
             previous = current         # Move previous to current
             current = next_node        # Move to the next node
         
-        self.head = previous  # Update head to the last node processed
-	  return True
+        self.__head = previous  # Update head to the last node processed
+        return True
 
-    def is_palindrome(self):
-        if self.length == 0:
+    def is_palindrome(self) -> bool:
+        """
+        Check if the doubly linked list is a palindrome.
+        A palindrome is a sequence that reads the same backward as forward.
+        This method compares the values from the head and the tail of the list,
+        moving towards the center, to determine if the list is a palindrome.
+        Returns:
+            bool: True if the list is a palindrome, False otherwise.
+        """
+        if self.__length == 0:
             return True  # An empty list is a palindrome
-        if self.length == 1:
+        if self.__length == 1:
             return True  # A single node is a palindrome
         
-        left = self.head
-        right = self.tail
+        left = self.__head
+        right = self.__tail
 
         while left != right and left.prev != right:  # Check until the pointers meet
-            if left.value != right.value:
+            if left.data != right.data:
                 return False  # Values don't match
             left = left.next
             right = right.prev
         
         return True
 
-    def swap_pairs(self):
-        if self.head is None or self.head.next is None:
+    def swap_pairs(self)->bool:
+        """
+        Swap the values of adjacent nodes in the doubly linked list.
+        This method iterates through the list and swaps the values of each pair of adjacent nodes.
+        If the list is empty or contains only one node, no swaps are performed.
+        Returns:
+            bool: True if the operation was performed, otherwise returns None.
+        """
+        if self.__head is None or self.__head.next is None:
             return  # No swap needed for empty or single-node lists
 
-        current = self.head
+        current = self.__head
         
         # Initialize a pointer for the new head if the list has more than one node
-        if current.next is self.tail:
-            self.tail = current
+        if current.next is self.__tail:
+            self.__tail = current
         
         while current and current.next:
             # Swap values of the current node and the next node
-            current.value, current.next.value = current.next.value, current.value
+            current.data, current.next.data = current.next.data, current.data
             
             # Move to the next pair (two nodes ahead)
             current = current.next.next
@@ -322,8 +351,8 @@ class DoublyLinkedList:
             
             # Update tail if we reach the end of the list
             if current.next is None:
-                self.tail = current.prev
-    
+                self.__tail = current.prev
+        return True
 
     def __str__(self)->str:
         """
@@ -367,17 +396,3 @@ class DoublyLinkedList:
         """
         return f"DoublyLinkedList(head={self.__head}, tail={self.__tail}, length={self.__length})"
     
-if __name__ == "__main__":
-    dll = DoublyLinkedList(5)
-    dll.append(10)
-    dll.append(15)
-    dll.append(20)
-    dll.append(25)
-    print(dll)
-    print(len(dll))
-    print(dll.length)
-    print(repr(dll))
-    print(dll.head)
-    print(dll.tail)
-    print(dll.get(1))
-    print(dll.get(4))
