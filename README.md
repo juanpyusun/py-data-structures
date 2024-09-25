@@ -1,13 +1,19 @@
 # Índice
-1. [Definiciones de Mediciones de Complejidad Temporal](#definiciones-de-mediciones-de-complejidad-temporal)
-2. [Mediciones Comunes de Complejidad Temporal](#mediciones-comunes-de-complejidad-temporal)
-3. [Definiciones de Mediciones de Complejidad Espacial](#definiciones-de-mediciones-de-complejidad-espacial)
-4. [Lista](#lista)
-5. [Linked List (LL)](#linked-list-ll)
-6. [Doubly Linked List (DLL)](#doubly-linked-list-dll)
-7. [Stack (S)](#stack-s)
-8. [Queue (Q)](#queue-q)
-9. [Resumen de Complejidad Temporal y Estructuras Lineales - Tabla Comparativa](#resumen-de-complejidad-temporal-y-estructuras-lineales---tabla-comparativa)
+- [Índice](#índice)
+- [Definiciones de mediciones de complejidad temporal](#definiciones-de-mediciones-de-complejidad-temporal)
+- [Mediciones comunes de complejidad temporal](#mediciones-comunes-de-complejidad-temporal)
+- [Definiciones de mediciones de complejidad espacial](#definiciones-de-mediciones-de-complejidad-espacial)
+- [Lista](#lista)
+  - [Listas (L) y Big-O](#listas-l-y-big-o)
+- [Linked List (LL)](#linked-list-ll)
+  - [LL and Big-O](#ll-and-big-o)
+- [Doubly Linked List (DLL)](#doubly-linked-list-dll)
+  - [DLL and Big-O](#dll-and-big-o)
+- [Stack (S)](#stack-s)
+  - [S and Big-O](#s-and-big-o)
+- [Queue (Q)](#queue-q)
+  - [Q and Big-O](#q-and-big-o)
+- [Resumen de Complejidad temporal y estructuras lineales - Tabla comparativa](#resumen-de-complejidad-temporal-y-estructuras-lineales---tabla-comparativa)
 
 
 ***
