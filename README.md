@@ -3,8 +3,8 @@
 - [Definiciones de mediciones de complejidad temporal](#definiciones-de-mediciones-de-complejidad-temporal)
 - [Mediciones comunes de complejidad temporal](#mediciones-comunes-de-complejidad-temporal)
 - [Definiciones de mediciones de complejidad espacial](#definiciones-de-mediciones-de-complejidad-espacial)
-- [Lista](#lista)
-  - [Listas (L) y Big-O](#listas-l-y-big-o)
+- [List](#list)
+  - [L and Big-O](#l-and-big-o)
 - [Linked List (LL)](#linked-list-ll)
   - [LL and Big-O](#ll-and-big-o)
 - [Doubly Linked List (DLL)](#doubly-linked-list-dll)
@@ -14,6 +14,10 @@
 - [Queue (Q)](#queue-q)
   - [Q and Big-O](#q-and-big-o)
 - [Resumen de Complejidad temporal y estructuras lineales - Tabla comparativa](#resumen-de-complejidad-temporal-y-estructuras-lineales---tabla-comparativa)
+- [Binary Search Trees (BST)](#binary-search-trees-bst)
+  - [BST and Big-O](#bst-and-big-o)
+  - [Otro tipo de arboles](#otro-tipo-de-arboles)
+- [Resumen de Complejidad temporal y estructuras no lineales - Tabla comparativa](#resumen-de-complejidad-temporal-y-estructuras-no-lineales---tabla-comparativa)
 
 
 ***
@@ -41,12 +45,11 @@
 ***
 ***
 
-# Lista
+# List
 - **Estructura**: Espacios contiguos de memoria.
 - **Acceso**: Índice en sus elementos.
 
-## Listas (L) y Big-O
-
+## L and Big-O
 - **Acceso a Elementos**
   - **Complejidad**: `O(1)`
   - Descripción: Las listas permiten acceso directo a elementos utilizando índices, lo que resulta en un tiempo constante para acceder a cualquier elemento.
@@ -154,7 +157,6 @@
 - **Memoria**: Cada nodo ocupa más espacio que un nodo de una lista enlazada simple debido a los dos apuntadores.
 
 ## DLL and Big-O
-
 - **Añadir un Elemento al Final**
   - **Complejidad**: `O(1)`
   - **Descripción**: Se puede añadir un nuevo nodo al final actualizando el apuntador de la `Tail` y haciendo que el nuevo nodo apunte a `None`.
@@ -258,13 +260,84 @@
   - **Descripción**: Si se mantiene un contador de elementos, contar el número de elementos en la cola es una operación constante.
 
 # Resumen de Complejidad temporal y estructuras lineales - Tabla comparativa
-| Operations | Description | LIST | LL | DLL | Stack | Queue |
-| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| append | add tail | `O(1)` | `O(1)` | `O(1)` | `O(1)` | `O(1)` |
-| pop | remove tail | `O(1)` | `O(n)` | `O(1)` | `O(1)` | `O(n)` |
-| prepend | add head | `O(n)` | `O(1)` | `O(1)` | `O(n)` | `O(n)` |
-| pop first | remove head  | `O(n)` | `O(1)` | `O(1)` | `O(n)` | `O(1)` |
-| insert | add i | `O(n)` | `O(n)` | `O(n)` | `O(n)` | `O(n)` |
-| remove | remove i | `O(n)` | `O(n)` | `O(n)` | `O(n)` | `O(n)` |
-| Lookup by index | - | `O(1)` | `O(n)` | `O(n)` | `O(n)` | `O(n)` |
-| Lookup by Value | - | `O(n)` | `O(n)` | `O(n)` | `O(n)` | `O(n)` |
+| Operation         | Description                         | LIST     | LL       | DLL      | Stack    | Queue    |
+| :---------------: | :---------------------------------: | :------: | :------: | :------: | :------: | :------: |
+| Append            | Add element at the tail             | `O(1)`   | `O(1)`   | `O(1)`   | `O(1)`   | `O(1)`   |
+| Pop               | Remove element at the tail          | `O(1)`   | `O(n)`   | `O(1)`   | `O(1)`   | `O(n)`   |
+| Prepend           | Add element at the head             | `O(n)`   | `O(1)`   | `O(1)`   | `O(n)`   | `O(n)`   |
+| Pop First         | Remove element at the head          | `O(n)`   | `O(1)`   | `O(1)`   | `O(n)`   | `O(1)`   |
+| Insert            | Add element at position `i`         | `O(n)`   | `O(n)`   | `O(n)`   | `O(n)`   | `O(n)`   |
+| Remove            | Remove element at position `i`      | `O(n)`   | `O(n)`   | `O(n)`   | `O(n)`   | `O(n)`   |
+| Lookup by Index   | Access element by index             | `O(1)`   | `O(n)`   | `O(n)`   | `O(n)`   | `O(n)`   |
+| Lookup by Value   | Find element by value               | `O(n)`   | `O(n)`   | `O(n)`   | `O(n)`   | `O(n)`   |
+| Peek              | View element at the top (stack/queue)| N/A      | N/A      | N/A      | `O(1)`   | `O(1)`   |
+| Enqueue           | Add element at the rear (queue)     | N/A      | N/A      | N/A      | N/A      | `O(1)`   |
+| Dequeue           | Remove element from the front (queue)| N/A      | N/A      | N/A      | N/A      | `O(1)`   |
+
+
+***
+***
+
+# Binary Search Trees (BST)
+- **Estructura**: Se compone de nodos conectados de manera jerárquica mediante relaciones de padre-hijo.
+- **Nodo**: Un nodo se compone de un valor y sus hijos. En un árbol binario, por ejemplo, un nodo tiene un valor y dos apuntadores: `{"value": x, "left": None, "right": None}`.
+- **Acceso**: Los elementos no tienen índices como en una lista.
+- **Padre (Parent)**: Un nodo que tiene uno o más nodos descendientes se llama "padre". En un árbol, cada nodo puede tener un solo padre, excepto la raíz, que no tiene ninguno.
+- **Hijo (Child)**: Un nodo que es descendiente directo de otro nodo se llama "hijo". En un árbol, cada nodo puede tener múltiples hijos, pero solo un padre.
+- **Hermanos (Siblings)**: Dos o más nodos que comparten el mismo padre en un árbol se denominan "hermanos". Por ejemplo, en un árbol binario, si un nodo tiene dos hijos, esos hijos son hermanos entre sí.
+- **Memoria**: Los nodos no están necesariamente acomodados en espacios contiguos de memoria.
+- **Raíz (Root)**: Es el nodo superior que no tiene padre, siendo el punto de partida para el árbol.
+- **Hojas (Leaves)**: Nodos que no tienen hijos.
+- **Conexiones**: Cada nodo apunta a sus hijos, y en un árbol binario, tiene como máximo dos hijos: `left` y `right`.
+- **Subárboles**: Un nodo y sus descendientes forman un subárbol, que puede tratarse como un árbol independiente.
+- **Árbol binario completo (Full Binary Tree)**: Cada nodo tiene exactamente 0 o 2 hijos; es decir, ningún nodo tiene un solo hijo.
+- **Árbol binario perfecto (Perfect Binary Tree)**: Todos los nodos internos tienen exactamente 2 hijos, y todas las hojas están al mismo nivel.
+- **Árbol completo (Complete Binary Tree)**: Todos los niveles, excepto posiblemente el último, están completamente llenos, y los nodos en el último nivel se colocan de manera consecutiva de izquierda a derecha.
+
+## BST and Big-O
+- **Añadir un nodo**
+  - **Complejidad**: `O(log n)` (árbol balanceado), `O(n)` (peor caso en árbol desbalanceado)
+  - **Descripción**: Se compara el valor del nuevo nodo con los valores existentes en el árbol y se inserta en el lugar adecuado, moviéndose por el árbol de manera recursiva o iterativa.
+  
+- **Eliminar un nodo**
+  - **Complejidad**: `O(log n)` (árbol balanceado), `O(n)` (peor caso en árbol desbalanceado)
+  - **Descripción**: Se localiza el nodo a eliminar, luego se ajustan las referencias de los nodos adyacentes, y en algunos casos, se reorganiza el árbol para mantener el equilibrio.
+  
+- **Buscar un nodo**
+  - **Complejidad**: `O(log n)` (árbol balanceado), `O(n)` (peor caso en árbol desbalanceado)
+  - **Descripción**: Se compara el valor del nodo objetivo con los nodos del árbol, dividiendo el espacio de búsqueda en mitades hasta encontrar el nodo deseado.
+
+- **Recorrer el árbol**
+  - **Complejidad**: `O(n)`
+  - **Descripción**: Se recorren todos los nodos de un árbol en distintos órdenes: preorden, enorden o postorden, visitando cada nodo una vez.
+
+- **Altura del árbol**
+  - **Complejidad**: `O(n)`
+  - **Descripción**: Para calcular la altura de un árbol, se debe recorrer cada rama hasta la hoja más profunda.
+
+- **Balancear el árbol**
+  - **Complejidad**: `O(n log n)` en promedio.
+  - **Descripción**: Si el árbol se desbalancea (por ejemplo, un árbol binario de búsqueda se convierte en una lista), es necesario realizar una serie de rotaciones o reestructuraciones para mantener un balance óptimo.
+
+## Otro tipo de arboles
+- **Árbol Binario**: Cada nodo tiene un máximo de dos hijos.
+- **Árbol No Binario**: Cada nodo no tiene un máximo de hijos.
+- **Árbol Binario de Búsqueda (BST)**: Es un árbol binario con la propiedad que para cada nodo, los valores de los nodos en el subárbol izquierdo son menores y los del subárbol derecho son mayores.
+- **Árbol AVL**: Es un BST auto-balanceado, que mantiene una altura mínima para garantizar operaciones eficientes.
+
+# Resumen de Complejidad temporal y estructuras no lineales - Tabla comparativa
+
+| Operations         | Description                       | Binary Tree | BST (Balanced) | BST (Unbalanced) | Heap   | Graph (Adjacency List) | Graph (Adjacency Matrix) |
+| :----------------: | :-------------------------------: | :---------: | :------------: | :--------------: | :----: | :--------------------: | :---------------------: |
+| Insert             | Add a node                        | `O(log n)`  | `O(log n)`     | `O(n)`           | `O(log n)` | `O(1)`                | `O(n^2)`                 |
+| Delete             | Remove a node                     | `O(log n)`  | `O(log n)`     | `O(n)`           | `O(log n)` | `O(E)`               | `O(n^2)`                 |
+| Search             | Find a node                       | `O(log n)`  | `O(log n)`     | `O(n)`           | `O(n)`    | `O(V + E)`            | `O(n^2)`                 |
+| Access root        | Root node                         | `O(1)`      | `O(1)`         | `O(1)`           | `O(1)`    | N/A                    | N/A                      |
+| Find min/max       | Minimum/maximum value             | `O(n)`      | `O(log n)`     | `O(n)`           | `O(1)`    | N/A                    | N/A                      |
+| Traverse (DFS/BFS) | Visit all nodes                   | `O(n)`      | `O(n)`         | `O(n)`           | `O(n)`    | `O(V + E)`            | `O(n^2)`                 |
+| Update             | Modify a node value               | `O(log n)`  | `O(log n)`     | `O(n)`           | `O(log n)` | `O(E)`               | `O(n^2)`                 |
+
+En la notación `O(V + E)`, se refiere a la complejidad de tiempo en el contexto de grafos, donde:
+
+- `V` es el número de vértices (nodos) en el grafo.
+- `E` es el número de aristas (edges) en el grafo.

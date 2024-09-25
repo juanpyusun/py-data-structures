@@ -1,15 +1,15 @@
 from typing import Optional
 
 class Node:    
-    def __init__(self, initdata)->None:
-        self.__data = initdata
+    def __init__(self, value)->None:
+        self.__value = value
         self.__next = None
 
     def __repr__(self)->str:
-        return f"Node(data={self.__data})"
+        return f"Node(value={self.__value})"
 
     def __str__(self)->str:
-        return f"Node(data={self.__data})"
+        return f"Node(value={self.__value})"
 
 class Stack:
     def __init__(self, value=None)->None:
@@ -45,7 +45,7 @@ class Stack:
         temp = self.__top
         string = ""
         while temp:
-            string += f"<- {temp.data} |"
+            string += f"<- {temp.value} |"
             temp = temp.next
         return string + "|"
 

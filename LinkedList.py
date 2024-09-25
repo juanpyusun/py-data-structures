@@ -1,15 +1,15 @@
 from typing import Optional, Generator
 
 class Node:    
-    def __init__(self, initdata)->None:
-        self.__data = initdata
+    def __init__(self, value)->None:
+        self.__value = value
         self.__next = None
 
     def __repr__(self)->str:
-        return f"Node(data={self.__data})"
+        return f"Node(value={self.__value})"
 
     def __str__(self)->str:
-        return f"Node(data={self.__data})"
+        return f"Node(value={self.__value})"
 
 class LinkedList:
     
@@ -114,7 +114,7 @@ class LinkedList:
         temp = self.get(index)
         
         if temp:
-            temp.data = value
+            temp.value = value
             return True
         
         return False
@@ -484,7 +484,7 @@ class LinkedList:
         """
         Returns a string representation of the linked list.
         
-        The string is formatted as a sequence of node data values separated by ' -> ',
+        The string is formatted as a sequence of node value values separated by ' -> ',
         ending with 'None' to indicate the end of the list.
 
         Returns:
@@ -493,7 +493,7 @@ class LinkedList:
         temp = self.__head
         string = ""
         while temp is not None:
-            string += f"{temp.data} -> "
+            string += f"{temp.value} -> "
             temp = temp.next
         return string + "None"
 

@@ -1,15 +1,15 @@
 from typing import Optional
 
 class Node:    
-    def __init__(self, initdata)->None:
-        self.__data = initdata
+    def __init__(self, value)->None:
+        self.__value = value
         self.__next = None
         self.__prev = None
     def __repr__(self)->str:
-        return f"Node(data={self.__data})"
+        return f"Node(value={self.__value})"
 
     def __str__(self)->str:
-        return f"Node(data={self.__data})"
+        return f"Node(value={self.__value})"
 
 class DoublyLinkedList:
     
@@ -266,7 +266,7 @@ class DoublyLinkedList:
         node = self.get(index)
         
         if node:
-            node.data = value
+            node.value = value
             return True
         return False
     
@@ -281,7 +281,7 @@ class DoublyLinkedList:
             None
         """
         if self.head and self.tail:
-            self.head.data, self.tail.data = self.tail.data, self.head.data 
+            self.head.value, self.tail.value = self.tail.value, self.head.value 
 
     def reverse(self)->bool:
         """
@@ -324,7 +324,7 @@ class DoublyLinkedList:
         right = self.__tail
 
         while left != right and left.prev != right:  # Check until the pointers meet
-            if left.data != right.data:
+            if left.value != right.value:
                 return False  # Values don't match
             left = left.next
             right = right.prev
@@ -350,7 +350,7 @@ class DoublyLinkedList:
         
         while current and current.next:
             # Swap values of the current node and the next node
-            current.data, current.next.data = current.next.data, current.data
+            current.value, current.next.value = current.next.value, current.value
             
             # Move to the next pair (two nodes ahead)
             current = current.next.next
@@ -368,8 +368,8 @@ class DoublyLinkedList:
         """
         Returns a string representation of the doubly linked list.
         
-        The format of the string is "None <- node1_data <-> node2_data <-> ... <-> nodeN_data -> None",
-        where each node's data is separated by " <-> " and the list starts with "None <- " and ends with " -> None".
+        The format of the string is "None <- node1_value <-> node2_value <-> ... <-> nodeN_value -> None",
+        where each node's value is separated by " <-> " and the list starts with "None <- " and ends with " -> None".
         
         Returns:
             str: A string representation of the doubly linked list.
@@ -377,7 +377,7 @@ class DoublyLinkedList:
         temp = self.__head
         string = "None <- "
         while temp:
-            string += f"{temp.data}"
+            string += f"{temp.value}"
             
             if temp.next:
                 string += " <-> "

@@ -1,15 +1,15 @@
 from typing import Optional
 
 class Node:    
-    def __init__(self, initdata)->None:
-        self.__data = initdata
+    def __init__(self, value)->None:
+        self.__value = value
         self.__next = None
 
     def __repr__(self)->str:
-        return f"Node(data={self.__data})"
+        return f"Node(value={self.__value})"
 
     def __str__(self)->str:
-        return f"Node(data={self.__data})"
+        return f"Node(value={self.__value})"
 
 # Se usara la estructura de LinkedList, siendo Head el primer elemento en salir
 # y siendo Tail el ultimo elemento en llegar, se añade en Tail, se remueve en Head
@@ -58,6 +58,6 @@ class Queue:
         temp = self.__first
         string = "<- "
         while temp:
-            string += f"{temp.data} <- "
+            string += f"{temp.value} <- "
             temp = temp.next
         return string
