@@ -372,6 +372,43 @@
   - **Complejidad**: `O(1)` en promedio, `O(n)` en el peor caso.
   - **Descripción**: Los elementos se cargan eficientemente en la tabla, pero a medida que la tabla se llena, puede necesitarse rehashing para mantener la eficiencia.
 
+# Graph (G)
+- **Estructura**: Un grafo se compone de nodos (o vértices) y aristas (o conexiones) que los unen.
+- **Acceso**: Los elementos (nodos) pueden ser accedidos a través de sus conexiones (aristas).
+- **Nodo**: Un nodo puede ser representado como un objeto o diccionario que contiene un valor y una lista de adyacencias, por ejemplo: `{"value": x, "edges": [y, z]}`. Entonces, un grafo sería un conjunto de nodos con sus conexiones.
+- **Memoria**: Los nodos no están necesariamente en espacios contiguos de memoria, y las conexiones pueden ser bidireccionales o unidireccionales.
+- **Conexiones**: Cada nodo puede estar conectado a múltiples nodos, y estas conexiones son representadas por aristas.
+- **Aristas**: Las aristas pueden ser ponderadas (con un costo) o no ponderadas.
+
+## G and Big-O
+- **Añadir un nodo**
+  - **Complejidad**: `O(1)`
+  - Descripción: Se crea un nuevo nodo y se añade a la estructura del grafo (por ejemplo, a un diccionario o lista de nodos).
+
+- **Eliminar un nodo**
+  - **Complejidad**: `O(V + E)`
+  - Descripción: Es necesario eliminar todas las aristas que están conectadas a ese nodo, lo que puede requerir recorrer todos los nodos (V) y aristas (E) del grafo.
+
+- **Añadir una arista**
+  - **Complejidad**: `O(1)`
+  - Descripción: Se añade una conexión entre dos nodos, lo que puede hacerse en tiempo constante si se utilizan listas o diccionarios.
+
+- **Eliminar una arista**
+  - **Complejidad**: `O(V)`
+  - Descripción: Se debe encontrar la arista entre los dos nodos, lo que puede implicar iterar a través de las conexiones de uno de los nodos.
+
+- **Buscar un nodo**
+  - **Complejidad**: `O(V)`
+  - Descripción: Se puede requerir recorrer todos los nodos para encontrar el nodo deseado, especialmente si no se tiene un índice.
+
+- **Buscar una arista**
+  - **Complejidad**: `O(V)`
+  - Descripción: Se debe iterar a través de las conexiones de un nodo para ver si hay una arista hacia el nodo deseado.
+
+- **Recorrer el grafo (DFS o BFS)**
+  - **Complejidad**: `O(V + E)`
+  - Descripción: Ambos algoritmos requieren visitar cada nodo y cada arista del grafo, por lo que la complejidad es proporcional a la suma del número de nodos y aristas.
+
 # Resumen de Complejidad Temporal y Estructuras No Lineales - Tabla Comparativa
 | **Operations**         | **Description**                       | **Binary Tree** | **BST (Balanced)** | **BST (Unbalanced)** | **Heap**   | **Graph (Adjacency List)** | **Graph (Adjacency Matrix)** |
 | :--------------------- | :-----------------------------------: | :-------------: | :----------------: | :------------------: | :--------: | :------------------------: | :---------------------------: |
