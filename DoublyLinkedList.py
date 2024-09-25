@@ -11,7 +11,34 @@ class Node:
     def __str__(self)->str:
         return f"Node(value={self.__value})"
 
-class DoublyLinkedList:
+class DoublyLinkedList:  
+    """
+    A class representing a doubly linked list.
+    Attributes:
+        __head (Optional[Node]): The head node of the doubly linked list.
+        __tail (Optional[Node]): The tail node of the doubly linked list.
+        __length (int): The number of elements in the doubly linked list.
+    Methods:
+        __init__(value: Optional[int|str] = None) -> None:
+        head() -> Optional[Node]:
+        tail() -> Optional[Node]:
+        length() -> int:
+        append(value: int|str) -> bool:
+        get(index: int) -> Optional[Node]:
+        insert(index: int, value: int|str) -> bool:
+        pop() -> Optional[Node]:
+        pop_first() -> Optional[Node]:
+        prepend(value: int|str) -> bool:
+        remove(index: int) -> Optional[Node]:
+        set_value(index: int, value: int|str) -> bool:
+        swap_first_last() -> None:
+        reverse() -> bool:
+        is_palindrome() -> bool:
+        swap_pairs() -> bool:
+        __str__() -> str:
+        __len__() -> int:
+        __repr__() -> str:
+    """
     
     def __init__(self, value=None)->None:
         """

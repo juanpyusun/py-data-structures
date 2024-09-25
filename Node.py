@@ -1,6 +1,121 @@
 from typing import Optional
 
 class Node:    
+    """
+    Node class represents a node in a doubly linked list with various operator overloads.
+    Attributes:
+        __value (int | str): The value stored in the node.
+        __next (Optional[Node]): The next node in the list.
+        __prev (Optional[Node]): The previous node in the list.
+    Methods:
+        __init__(value: int | str) -> None:
+            Initializes a new node with the given value.
+        prev -> Optional['Node']:
+            Gets the previous node.
+        prev(newprev: Optional['Node']) -> None:
+            Sets the previous node.
+        value -> int | str:
+            Gets the value of the node.
+        value(newvalue: int | str) -> None:
+            Sets the value of the node.
+        next -> Optional['Node']:
+            Gets the next node.
+        next(newnext: Optional['Node']) -> None:
+            Sets the next node.
+        __repr__() -> str:
+            Returns a string representation of the node.
+        __str__() -> str:
+            Returns a string representation of the node.
+        __eq__(other: 'Node') -> bool:
+            Checks if the value of this node is equal to the value of another node.
+        __ne__(other: 'Node') -> bool:
+            Checks if the value of this node is not equal to the value of another node.
+        __hash__() -> int:
+            Returns the hash of the node's value.
+        __len__() -> int:
+            Returns the length of the node (always 1).
+        __add__(other: 'Node') -> 'Node':
+            Adds the value of this node to the value of another node and returns a new node.
+        __sub__(other: 'Node') -> 'Node':
+            Subtracts the value of another node from the value of this node and returns a new node.
+        __mul__(other: 'Node') -> 'Node':
+            Multiplies the value of this node by the value of another node and returns a new node.
+        __truediv__(other: 'Node') -> 'Node':
+            Divides the value of this node by the value of another node and returns a new node.
+        __floordiv__(other: 'Node') -> 'Node':
+            Floor divides the value of this node by the value of another node and returns a new node.
+        __mod__(other: 'Node') -> 'Node':
+            Returns a new node with the value of this node modulo the value of another node.
+        __pow__(other: 'Node') -> 'Node':
+            Raises the value of this node to the power of the value of another node and returns a new node.
+        __lshift__(other: 'Node') -> 'Node':
+            Left shifts the value of this node by the value of another node and returns a new node.
+        __rshift__(other: 'Node') -> 'Node':
+            Right shifts the value of this node by the value of another node and returns a new node.
+        __and__(other: 'Node') -> 'Node':
+            Performs a bitwise AND operation with the value of another node and returns a new node.
+        __or__(other: 'Node') -> 'Node':
+            Performs a bitwise OR operation with the value of another node and returns a new node.
+        __xor__(other: 'Node') -> 'Node':
+            Performs a bitwise XOR operation with the value of another node and returns a new node.
+        __iadd__(other: 'Node') -> 'Node':
+            In-place addition of the value of another node to this node.
+        __isub__(other: 'Node') -> 'Node':
+            In-place subtraction of the value of another node from this node.
+        __imul__(other: 'Node') -> 'Node':
+            In-place multiplication of the value of another node with this node.
+        __itruediv__(other: 'Node') -> 'Node':
+            In-place true division of the value of this node by the value of another node.
+        __ifloordiv__(other: 'Node') -> 'Node':
+            In-place floor division of the value of this node by the value of another node.
+        __imod__(other: 'Node') -> 'Node':
+            In-place modulo operation with the value of another node.
+        __ipow__(other: 'Node') -> 'Node':
+            In-place exponentiation of the value of this node by the value of another node.
+        __ilshift__(other: 'Node') -> 'Node':
+            In-place left shift of the value of this node by the value of another node.
+        __irshift__(other: 'Node') -> 'Node':
+            In-place right shift of the value of this node by the value of another node.
+        __pos__() -> 'Node':
+            Returns a new node with the positive value of this node.
+        __neg__() -> 'Node':
+            Returns a new node with the negative value of this node.
+        __invert__() -> 'Node':
+            Returns a new node with the bitwise inversion of the value of this node.
+        __abs__() -> 'Node':
+            Returns a new node with the absolute value of this node.
+        __lt__(other: 'Node') -> bool:
+            Checks if the value of this node is less than the value of another node.
+        __le__(other: 'Node') -> bool:
+            Checks if the value of this node is less than or equal to the value of another node.
+        __gt__(other: 'Node') -> bool:
+            Checks if the value of this node is greater than the value of another node.
+        __ge__(other: 'Node') -> bool:
+            Checks if the value of this node is greater than or equal to the value of another node.
+        __contains__(item) -> bool:
+            Checks if the node contains the given item (compares with the node's value).
+        __getitem__(key) -> 'Node':
+            Returns the node itself (for demonstration purposes).
+        __setitem__(key, value) -> None:
+            Sets the node's value (for demonstration purposes).
+        __delitem__(key) -> None:
+            Deletes the node's value (for demonstration purposes).
+        __call__(*args, **kwargs) -> None:
+            Prints the arguments and keyword arguments passed to the node.
+        __iter__():
+            Yields the node's value.
+        __next__():
+            Raises StopIteration (for demonstration purposes).
+        __bool__() -> bool:
+            Returns the boolean value of the node's value.
+        __float__() -> float:
+            Returns the float representation of the node's value.
+        __int__() -> int:
+            Returns the integer representation of the node's value.
+        __reversed__():
+            Returns a reversed iterator of a single-item list containing the node's value.
+    """
+    
     def __init__(self, value) -> None:
         self.__value = value  # Using __value to indicate it's a "private" attribute
         self.__next = None  # The next node is initialized as None

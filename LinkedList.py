@@ -12,6 +12,36 @@ class Node:
         return f"Node(value={self.__value})"
 
 class LinkedList:
+    """
+    A class representing a singly linked list.
+    Methods:
+        __init__(value=None) -> None:
+        head() -> Optional[Node]:
+        tail() -> Optional[Node]:
+        length() -> int:
+        append(value: int | str) -> bool:
+        get(index: int) -> Optional[Node]:
+        set_value(index: int, value: int | str) -> bool:
+        insert(index: int, value: int | str) -> bool:
+        remove(index: int) -> Optional[Node]:
+        reverse() -> None:
+        pop() -> Optional[Node]:
+        prepend(value: int | str) -> bool:
+        pop_first() -> Optional[Node]:
+        __two_pointer_method() -> Generator[tuple[Node, Node], None, None]:
+        find_middle_node() -> Optional[Node]:
+        has_loop() -> bool:
+        find_kth_from_end(k: int) -> Optional[Node]:
+        partition_list(x: int) -> None:
+            greater than or equal to `x`.
+        remove_duplicates() -> None:
+            Removes duplicate values from the linked list.
+        binary_to_decimal() -> int:
+        reverse_between(start_index: int, end_index: int) -> None:
+        __str__() -> str:
+        __len__() -> int:
+        __repr__() -> str:
+    """
     
     def __init__(self, value=None)->None:
         """

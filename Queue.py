@@ -16,6 +16,23 @@ class Node:
 # Siendo en ambos casos una complejidad O(1)
 
 class Queue:
+    """
+    Queue class implements a basic queue data structure using linked nodes.
+    Attributes:
+        __first (Node): The first node in the queue.
+        __last (Node): The last node in the queue.
+        __length (int): The number of elements in the queue.
+    Methods:
+        __init__(value: Optional[int|str] = None) -> None:
+            Initializes the queue. If a value is provided, it initializes the queue with one node containing that value.
+        dequeue() -> Optional[Node]:
+            Removes and returns the first node from the queue. If the queue is empty, returns None.
+        enqueue(value: int|str) -> bool:
+            Adds a new node with the given value to the end of the queue. Returns True after the node is added.
+        __str__() -> str:
+            Returns a string representation of the queue, showing all elements from first to last.
+    """
+    
     def __init__(self, value=None)->None:
         if value:
             new_node = Node(value)
