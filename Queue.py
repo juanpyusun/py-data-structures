@@ -28,20 +28,21 @@ class Queue:
 		self.__last = None
 	  else:
 	      self.__first = self.__first.next
-		temp.next = None
 	  
+        temp.next = None
 	  self.__length -= 1
 	  return temp
 
     def enqueue(self, value:int|str)->bool:
         new_node = Node(value)
-	  
-        if self.__first:
-	      self.__last.next = new_node
-		self-__last = new_node
-	  else:
-	      self.__first = new_node
-		self.__last = new_node
+        
+        if self.first:
+            self.last.next = new_node
+            self.last = new_node
+        else:
+            self.first = new_node
+            self.last = new_node
+        self.length += 1  
         return True
 
     def __str__(self)->str:
