@@ -17,6 +17,8 @@
 - [Binary Search Trees (BST)](#binary-search-trees-bst)
   - [BST and Big-O](#bst-and-big-o)
   - [Otro tipo de arboles](#otro-tipo-de-arboles)
+- [Hash Table (HT)](#hash-table-ht)
+  - [HT and Big-O](#ht-and-big-o)
 - [Resumen de Complejidad temporal y estructuras no lineales - Tabla comparativa](#resumen-de-complejidad-temporal-y-estructuras-no-lineales---tabla-comparativa)
 
 
@@ -325,17 +327,55 @@
 - **Árbol Binario de Búsqueda (BST)**: Es un árbol binario con la propiedad que para cada nodo, los valores de los nodos en el subárbol izquierdo son menores y los del subárbol derecho son mayores.
 - **Árbol AVL**: Es un BST auto-balanceado, que mantiene una altura mínima para garantizar operaciones eficientes.
 
+# Hash Table (HT)
+- **Estructura**: Utiliza un mecanismo de dispersión (hashing) para almacenar pares clave-valor.
+- **Acceso**: Los elementos se acceden mediante una clave única en lugar de un índice o posición.
+- **Elemento**: Cada entrada en el hashtable se compone de una clave y un valor: `{"key": x, "value": y}`. Se almacena el valor en un bucket basado en el hash de la clave.
+- **Memoria**: Las entradas no se almacenan necesariamente en posiciones contiguas en memoria.
+- **Colisiones**: Si dos claves tienen el mismo hash, se puede utilizar manejo de colisiones, como encadenamiento (listas enlazadas) o direccionamiento abierto (reubicación de datos).
+- **Clave Única**: Cada valor se asocia a una clave única, lo que permite acceder, insertar o eliminar elementos en tiempo constante promedio.
+- **Búsqueda**: Se basa en el hash de la clave, lo que generalmente permite acceso rápido.
+
+## HT and Big-O
+- **Añadir un elemento**
+  - **Complejidad**: `O(1)` en promedio, `O(n)` en el peor caso.
+  - **Descripción**: Se calcula el hash de la clave y se almacena el valor en el bucket correspondiente. En caso de colisión, puede necesitar más operaciones para encontrar un lugar libre o añadir el elemento a la lista vinculada.
+
+- **Quitar un elemento**
+  - **Complejidad**: `O(1)` en promedio, `O(n)` en el peor caso.
+  - **Descripción**: Se calcula el hash de la clave, se accede al bucket correspondiente, y el elemento se elimina, manejando colisiones si es necesario.
+
+- **Buscar un elemento**
+  - **Complejidad**: `O(1)` en promedio, `O(n)` en el peor caso.
+  - **Descripción**: Se calcula el hash de la clave para acceder al bucket correspondiente y se recupera el valor, buscando en caso de colisiones.
+
+- **Acceder a un elemento**
+  - **Complejidad**: `O(1)` en promedio, `O(n)` en el peor caso.
+  - **Descripción**: Utiliza el hash de la clave para acceder directamente al valor almacenado.
+
+- **Manejo de colisiones**
+  - **Complejidad**: Depende del método utilizado, como encadenamiento o direccionamiento abierto.
+  - **Descripción**: Si dos claves generan el mismo hash, el hashtable debe manejar la colisión. Con encadenamiento, los elementos se almacenan en una lista; con direccionamiento abierto, se busca otro lugar disponible.
+
+- **Rehashing**
+  - **Complejidad**: `O(n)`
+  - **Descripción**: Cuando la tabla alcanza una cierta capacidad, puede necesitar redimensionarse y recalcular los hashes de todos los elementos existentes para redistribuirlos en una nueva tabla más grande.
+
+- **Cargar elementos**
+  - **Complejidad**: `O(1)` en promedio, `O(n)` en el peor caso.
+  - **Descripción**: Los elementos se cargan eficientemente en la tabla, pero a medida que la tabla se llena, puede necesitarse rehashing para mantener la eficiencia.
+
 # Resumen de Complejidad temporal y estructuras no lineales - Tabla comparativa
 
-| Operations         | Description                       | Binary Tree | BST (Balanced) | BST (Unbalanced) | Heap   | Graph (Adjacency List) | Graph (Adjacency Matrix) |
-| :----------------: | :-------------------------------: | :---------: | :------------: | :--------------: | :----: | :--------------------: | :---------------------: |
-| Insert             | Add a node                        | `O(log n)`  | `O(log n)`     | `O(n)`           | `O(log n)` | `O(1)`                | `O(n^2)`                 |
-| Delete             | Remove a node                     | `O(log n)`  | `O(log n)`     | `O(n)`           | `O(log n)` | `O(E)`               | `O(n^2)`                 |
-| Search             | Find a node                       | `O(log n)`  | `O(log n)`     | `O(n)`           | `O(n)`    | `O(V + E)`            | `O(n^2)`                 |
-| Access root        | Root node                         | `O(1)`      | `O(1)`         | `O(1)`           | `O(1)`    | N/A                    | N/A                      |
-| Find min/max       | Minimum/maximum value             | `O(n)`      | `O(log n)`     | `O(n)`           | `O(1)`    | N/A                    | N/A                      |
-| Traverse (DFS/BFS) | Visit all nodes                   | `O(n)`      | `O(n)`         | `O(n)`           | `O(n)`    | `O(V + E)`            | `O(n^2)`                 |
-| Update             | Modify a node value               | `O(log n)`  | `O(log n)`     | `O(n)`           | `O(log n)` | `O(E)`               | `O(n^2)`                 |
+| Operations         | Description            | Binary Tree | BST (Balanced) | BST (Unbalanced) | Heap   | Graph (Adjacency List) | Graph (Adjacency Matrix) | Hashtable |
+| :----------------: | :--------------------: | :---------: | :------------: | :--------------: | :----: | :--------------------: | :---------------------: | :-------: |
+| Insert             | Add a node             | `O(log n)`  | `O(log n)`     | `O(n)`           | `O(log n)` | `O(1)`             | `O(n^2)`                 | `O(1)`    |
+| Delete             | Remove a node          | `O(log n)`  | `O(log n)`     | `O(n)`           | `O(log n)` | `O(E)`             | `O(n^2)`                 | `O(1)`    |
+| Search             | Find a node            | `O(log n)`  | `O(log n)`     | `O(n)`           | `O(n)`    | `O(V + E)`          | `O(n^2)`                 | `O(1)`    |
+| Update             | Modify a node value    | `O(log n)`  | `O(log n)`     | `O(n)`           | `O(log n)` | `O(E)`             | `O(n^2)`                 | `O(1)`    |
+| Traverse (DFS/BFS) | Visit all nodes        | `O(n)`      | `O(n)`         | `O(n)`           | `O(n)`    | `O(V + E)`          | `O(n^2)`                 | N/A       |
+| Access root        | Root node              | `O(1)`      | `O(1)`         | `O(1)`           | `O(1)`    | N/A                 | N/A                      | N/A       |
+| Find min/max       | Minimum/maximum value  | `O(n)`      | `O(log n)`     | `O(n)`           | `O(1)`    | N/A                 | N/A                      | N/A       |
 
 En la notación `O(V + E)`, se refiere a la complejidad de tiempo en el contexto de grafos, donde:
 
