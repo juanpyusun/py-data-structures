@@ -14,12 +14,16 @@
 - [Queue (Q)](#queue-q)
   - [Q and Big-O](#q-and-big-o)
 - [Resumen de Complejidad temporal y estructuras lineales - Tabla comparativa](#resumen-de-complejidad-temporal-y-estructuras-lineales---tabla-comparativa)
+  - [Notas sobre la Tabla](#notas-sobre-la-tabla)
 - [Binary Search Trees (BST)](#binary-search-trees-bst)
   - [BST and Big-O](#bst-and-big-o)
   - [Otro tipo de arboles](#otro-tipo-de-arboles)
 - [Hash Table (HT)](#hash-table-ht)
   - [HT and Big-O](#ht-and-big-o)
-- [Resumen de Complejidad temporal y estructuras no lineales - Tabla comparativa](#resumen-de-complejidad-temporal-y-estructuras-no-lineales---tabla-comparativa)
+- [Graph (G)](#graph-g)
+  - [G and Big-O](#g-and-big-o)
+- [Resumen de Complejidad Temporal y Estructuras No Lineales - Tabla Comparativa](#resumen-de-complejidad-temporal-y-estructuras-no-lineales---tabla-comparativa)
+  - [Consideraciones Adicionales](#consideraciones-adicionales)
 
 
 ***
@@ -378,7 +382,10 @@
 - **Nodo**: Un nodo puede ser representado como un objeto o diccionario que contiene un valor y una lista de adyacencias, por ejemplo: `{"value": x, "edges": [y, z]}`. Entonces, un grafo sería un conjunto de nodos con sus conexiones.
 - **Memoria**: Los nodos no están necesariamente en espacios contiguos de memoria, y las conexiones pueden ser bidireccionales o unidireccionales.
 - **Conexiones**: Cada nodo puede estar conectado a múltiples nodos, y estas conexiones son representadas por aristas.
-- **Aristas**: Las aristas pueden ser ponderadas (con un costo) o no ponderadas.
+- **Aristas**: Las aristas pueden ser ponderadas (con un costo) o no ponderadas, con direccion o bidireccionales.
+- **Representacion**: Se puede representar en codigo de dos maneras:
+  - **Adjacency Matrix**: Una matriz nxn donde cada fila y columna es un nodo, teniendo en cuenta la perspectiva de las filas, si A tiene conexion con B se pone 1 o el peso de esa arista, si todas las aristas son bidireccionales, se formara una matriz simetrica
+  - **Adjacency List**: Un diccionario cuyo cada nodo es una llave y sus valores es una lista con los nodos asociados
 
 ## G and Big-O
 - **Añadir un nodo**
