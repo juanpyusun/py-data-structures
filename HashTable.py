@@ -285,28 +285,4 @@ def longest_consecutive_sequence(nums):
             longest_streak = max(longest_streak, current_streak)
 
     return longest_streak
-
-
-if __name__ == "__main__":
-    ht = HashTable()
-    print(ht)
-    print(ht.size)
-    ht.set_item("name", "John")
-    ht.set_item("age", "25")
-    ht.set_item("city", "New York")
-    ht.set_item("country", "USA")
-    ht.set_item("job", "Engineer")
-    ht.set_item("company", "Google")
-    ht.set_item("salary", "100000")
-    ht.set_item("experience", "5 years")
-    ht.set_item("degree", "Masters")
-    ht.set_item("position", "Software Developer")
-    print(ht)
-    print(ht.size)
-    print(ht.get_item("name"))
-    print(ht.get_item("age"))
-    print(ht.get_item("city"))
-    print(ht.get_item("country"))
-    print(ht.get_item("countries"))
-    print(ht.keys())
     
