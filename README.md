@@ -262,20 +262,23 @@
   - **Descripción**: Si se mantiene un contador de elementos, contar el número de elementos en la cola es una operación constante.
 
 # Resumen de Complejidad temporal y estructuras lineales - Tabla comparativa
-| Operation         | Description                         | LIST     | LL       | DLL      | Stack    | Queue    |
-| :---------------: | :---------------------------------: | :------: | :------: | :------: | :------: | :------: |
-| Append            | Add element at the tail             | `O(1)`   | `O(1)`   | `O(1)`   | `O(1)`   | `O(1)`   |
-| Pop               | Remove element at the tail          | `O(1)`   | `O(n)`   | `O(1)`   | `O(1)`   | `O(n)`   |
-| Prepend           | Add element at the head             | `O(n)`   | `O(1)`   | `O(1)`   | `O(n)`   | `O(n)`   |
-| Pop First         | Remove element at the head          | `O(n)`   | `O(1)`   | `O(1)`   | `O(n)`   | `O(1)`   |
-| Insert            | Add element at position `i`         | `O(n)`   | `O(n)`   | `O(n)`   | `O(n)`   | `O(n)`   |
-| Remove            | Remove element at position `i`      | `O(n)`   | `O(n)`   | `O(n)`   | `O(n)`   | `O(n)`   |
-| Lookup by Index   | Access element by index             | `O(1)`   | `O(n)`   | `O(n)`   | `O(n)`   | `O(n)`   |
-| Lookup by Value   | Find element by value               | `O(n)`   | `O(n)`   | `O(n)`   | `O(n)`   | `O(n)`   |
-| Peek              | View element at the top (stack/queue)| N/A      | N/A      | N/A      | `O(1)`   | `O(1)`   |
-| Enqueue           | Add element at the rear (queue)     | N/A      | N/A      | N/A      | N/A      | `O(1)`   |
-| Dequeue           | Remove element from the front (queue)| N/A      | N/A      | N/A      | N/A      | `O(1)`   |
+| **Operation**       | **Description**                         | **Array List** | **Linked List (LL)** | **Doubly Linked List (DLL)** | **Stack** | **Queue** |
+| :------------------ | :-------------------------------------: | :------------: | :------------------: | :---------------------------: | :-------: | :-------: |
+| **Append**          | Add element at the tail                | `O(1)`        | `O(1)`               | `O(1)`                       | `O(1)`   | `O(1)`   |
+| **Pop**             | Remove element at the tail             | `O(1)`        | `O(n)`               | `O(1)`                       | `O(1)`   | `O(n)`   |
+| **Prepend**         | Add element at the head                | `O(n)`        | `O(1)`               | `O(1)`                       | `O(n)`   | `O(n)`   |
+| **Pop First**       | Remove element at the head             | `O(n)`        | `O(1)`               | `O(1)`                       | `O(n)`   | `O(1)`   |
+| **Insert**          | Add element at position `i`            | `O(n)`        | `O(n)`               | `O(n)`                       | `O(n)`   | `O(n)`   |
+| **Remove**          | Remove element at position `i`         | `O(n)`        | `O(n)`               | `O(n)`                       | `O(n)`   | `O(n)`   |
+| **Lookup by Index** | Access element by index                 | `O(1)`        | `O(n)`               | `O(n)`                       | `O(n)`   | `O(n)`   |
+| **Lookup by Value** | Find element by value                  | `O(n)`        | `O(n)`               | `O(n)`                       | `O(n)`   | `O(n)`   |
+| **Peek**            | View element at the top (stack/queue)  | N/A           | N/A                  | N/A                          | `O(1)`   | `O(1)`   |
+| **Enqueue**         | Add element at the rear (queue)        | N/A           | N/A                  | N/A                          | N/A      | `O(1)`   |
+| **Dequeue**         | Remove element from the front (queue)   | N/A           | N/A                  | N/A                          | N/A      | `O(1)`   |
 
+## Notas sobre la Tabla
+- La complejidad de las operaciones puede variar dependiendo de la implementación específica.
+- Para las listas, `N/A` indica que la operación no es aplicable.
 
 ***
 ***
@@ -328,15 +331,19 @@
 - **Árbol AVL**: Es un BST auto-balanceado, que mantiene una altura mínima para garantizar operaciones eficientes.
 
 # Hash Table (HT)
+
 - **Estructura**: Utiliza un mecanismo de dispersión (hashing) para almacenar pares clave-valor.
 - **Acceso**: Los elementos se acceden mediante una clave única en lugar de un índice o posición.
-- **Elemento**: Cada entrada en el hashtable se compone de una clave y un valor: `{"key": x, "value": y}`. Se almacena el valor en un bucket basado en el hash de la clave.
+- **Elemento**: Cada entrada en la tabla hash se compone de una clave y un valor: `{"key": x, "value": y}`. Se almacena el valor en un bucket basado en el hash de la clave.
 - **Memoria**: Las entradas no se almacenan necesariamente en posiciones contiguas en memoria.
-- **Colisiones**: Si dos claves tienen el mismo hash, se puede utilizar manejo de colisiones, como encadenamiento (listas enlazadas) o direccionamiento abierto (reubicación de datos).
+- **Colisiones**: Si dos claves tienen el mismo hash, se puede utilizar manejo de colisiones, como:
+  - **Encadenamiento**: Utiliza listas enlazadas para almacenar múltiples elementos en el mismo bucket.
+  - **Direccionamiento Abierto**: Reubica datos en la tabla para encontrar un lugar libre.
 - **Clave Única**: Cada valor se asocia a una clave única, lo que permite acceder, insertar o eliminar elementos en tiempo constante promedio.
-- **Búsqueda**: Se basa en el hash de la clave, lo que generalmente permite acceso rápido.
+- **Búsqueda**: Se basa en el hash de la clave, lo que generalmente permite un acceso rápido.
 
 ## HT and Big-O
+
 - **Añadir un elemento**
   - **Complejidad**: `O(1)` en promedio, `O(n)` en el peor caso.
   - **Descripción**: Se calcula el hash de la clave y se almacena el valor en el bucket correspondiente. En caso de colisión, puede necesitar más operaciones para encontrar un lugar libre o añadir el elemento a la lista vinculada.
@@ -365,19 +372,19 @@
   - **Complejidad**: `O(1)` en promedio, `O(n)` en el peor caso.
   - **Descripción**: Los elementos se cargan eficientemente en la tabla, pero a medida que la tabla se llena, puede necesitarse rehashing para mantener la eficiencia.
 
-# Resumen de Complejidad temporal y estructuras no lineales - Tabla comparativa
+# Resumen de Complejidad Temporal y Estructuras No Lineales - Tabla Comparativa
+| **Operations**         | **Description**                       | **Binary Tree** | **BST (Balanced)** | **BST (Unbalanced)** | **Heap**   | **Graph (Adjacency List)** | **Graph (Adjacency Matrix)** |
+| :--------------------- | :-----------------------------------: | :-------------: | :----------------: | :------------------: | :--------: | :------------------------: | :---------------------------: |
+| **Insert**             | Add a node                           | `O(log n)`      | `O(log n)`        | `O(n)`               | `O(log n)` | `O(1)`                    | `O(n^2)`                     |
+| **Delete**             | Remove a node                        | `O(log n)`      | `O(log n)`        | `O(n)`               | `O(log n)` | `O(E)`                    | `O(n^2)`                     |
+| **Search**             | Find a node                          | `O(log n)`      | `O(log n)`        | `O(n)`               | `O(n)`    | `O(V + E)`                | `O(n^2)`                     |
+| **Access Root**        | Access the root node                 | `O(1)`          | `O(1)`            | `O(1)`               | `O(1)`    | N/A                        | N/A                           |
+| **Find Min/Max**       | Find the minimum/maximum value       | `O(n)`          | `O(log n)`        | `O(n)`               | `O(1)`    | N/A                        | N/A                           |
+| **Traverse (DFS/BFS)** | Visit all nodes                      | `O(n)`          | `O(n)`            | `O(n)`               | `O(n)`    | `O(V + E)`                | `O(n^2)`                     |
+| **Update**             | Modify a node value                  | `O(log n)`      | `O(log n)`        | `O(n)`               | `O(log n)` | `O(E)`                    | `O(n^2)`                     |
+| **Is Empty**           | Check if the structure is empty      | `O(1)`          | `O(1)`            | `O(1)`               | `O(1)`    | `O(1)`                    | `O(1)`                       |
+| **Clear**              | Remove all nodes                     | `O(n)`          | `O(n)`            | `O(n)`               | `O(n)`    | `O(V)`                    | `O(n^2)`                     |
 
-| Operations         | Description            | Binary Tree | BST (Balanced) | BST (Unbalanced) | Heap   | Graph (Adjacency List) | Graph (Adjacency Matrix) | Hashtable |
-| :----------------: | :--------------------: | :---------: | :------------: | :--------------: | :----: | :--------------------: | :---------------------: | :-------: |
-| Insert             | Add a node             | `O(log n)`  | `O(log n)`     | `O(n)`           | `O(log n)` | `O(1)`             | `O(n^2)`                 | `O(1)`    |
-| Delete             | Remove a node          | `O(log n)`  | `O(log n)`     | `O(n)`           | `O(log n)` | `O(E)`             | `O(n^2)`                 | `O(1)`    |
-| Search             | Find a node            | `O(log n)`  | `O(log n)`     | `O(n)`           | `O(n)`    | `O(V + E)`          | `O(n^2)`                 | `O(1)`    |
-| Update             | Modify a node value    | `O(log n)`  | `O(log n)`     | `O(n)`           | `O(log n)` | `O(E)`             | `O(n^2)`                 | `O(1)`    |
-| Traverse (DFS/BFS) | Visit all nodes        | `O(n)`      | `O(n)`         | `O(n)`           | `O(n)`    | `O(V + E)`          | `O(n^2)`                 | N/A       |
-| Access root        | Root node              | `O(1)`      | `O(1)`         | `O(1)`           | `O(1)`    | N/A                 | N/A                      | N/A       |
-| Find min/max       | Minimum/maximum value  | `O(n)`      | `O(log n)`     | `O(n)`           | `O(1)`    | N/A                 | N/A                      | N/A       |
-
-En la notación `O(V + E)`, se refiere a la complejidad de tiempo en el contexto de grafos, donde:
-
-- `V` es el número de vértices (nodos) en el grafo.
-- `E` es el número de aristas (edges) en el grafo.
+## Consideraciones Adicionales
+- La complejidad de las operaciones puede variar según la implementación específica de cada estructura de datos.
+- Para grafos, la representación puede influir en la eficiencia de ciertas operaciones, como la búsqueda y el recorrido.
