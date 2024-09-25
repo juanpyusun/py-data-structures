@@ -23,23 +23,23 @@ class Stack:
     
     def pop(self)->Optional[Node]:
         if self.__height == 0:
-	      return None
-	  temp = self.__top
-	  self.__top = self.__top.next
-	  temp.next = None
-	  self.__height -= 1
-	  return temp
+            return None
+        temp = self.__top
+        self.__top = self.__top.next
+        temp.next = None
+        self.__height -= 1
+        return temp
 
     def push(self, value:int|str)->None:
         new_node = Node(value)
-	  if self.__height == 0:
-	      self.__top = new_node
-	  else:
-	      new_node.next = self.__top
-		self.__top = new_node
-	 
+        if self.__height == 0:
+            self.__top = new_node
+        else:
+            new_node.next = self.__top
+        self.__top = new_node
+
         self.__height += 1
-	  return True		
+        return True		
 
     def __str__(self)->str:
         temp = self.__top

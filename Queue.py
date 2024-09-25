@@ -29,19 +29,18 @@ class Queue:
 
     def dequeue(self)->Optional[Node]:
         if self.__length == 0:
-	      return None
-	  
-	  temp = self.__first
-	  
-	  if selec.__length == 1:
+            return None
+        temp = self.__first
+
+        if self.__length == 1:
             self.__first = None
-		self.__last = None
-	  else:
-	      self.__first = self.__first.next
-	  
+            self.__last = None
+        else:
+            self.__first = self.__first.next
+
         temp.next = None
-	  self.__length -= 1
-	  return temp
+        self.__length -= 1
+        return temp
 
     def enqueue(self, value:int|str)->bool:
         new_node = Node(value)
