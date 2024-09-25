@@ -1,5 +1,15 @@
-from Node import Node
 from typing import Optional
+
+class Node:    
+    def __init__(self, initdata)->None:
+        self.__data = initdata
+        self.__next = None
+
+    def __repr__(self)->str:
+        return f"Node(data={self.__data})"
+
+    def __str__(self)->str:
+        return f"Node(data={self.__data})"
 
 class Stack:
     def __init__(self, value=None)->None:

@@ -1,5 +1,15 @@
 from typing import Optional
-from Node import Node
+
+class Node:    
+    def __init__(self, initdata)->None:
+        self.__data = initdata
+        self.__next = None
+
+    def __repr__(self)->str:
+        return f"Node(data={self.__data})"
+
+    def __str__(self)->str:
+        return f"Node(data={self.__data})"
 
 # Se usara la estructura de LinkedList, siendo Head el primer elemento en salir
 # y siendo Tail el ultimo elemento en llegar, se añade en Tail, se remueve en Head
