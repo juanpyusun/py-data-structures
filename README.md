@@ -416,6 +416,34 @@
   - **Complejidad**: `O(V + E)`
   - Descripción: Ambos algoritmos requieren visitar cada nodo y cada arista del grafo, por lo que la complejidad es proporcional a la suma del número de nodos y aristas.
 
+# Heap
+- **Estructura**: Un heap es una estructura de datos en forma de árbol binario que satisface la propiedad de heap, donde cada nodo es menor (min-heap) o mayor (max-heap) que sus hijos.
+- **Acceso**: El acceso a los elementos se realiza a través de la raíz del árbol, que contiene el valor mínimo (en un min-heap) o máximo (en un max-heap).
+- **Nodos**: Cada nodo tiene un valor y apuntadores a sus nodos hijos. Por ejemplo, un nodo puede representarse como: `{"value": x, "left": None, "right": None}`.
+- **Memoria**: Generalmente se implementa usando un array o lista, donde la posición de los nodos se determina por sus índices.
+- **Propiedad de Heap**: En un min-heap, el valor de cada nodo es menor o igual que el valor de sus nodos hijos; en un max-heap, el valor de cada nodo es mayor o igual que el de sus nodos hijos.
+
+## Heap and Big-O
+- **Añadir un elemento**
+  - **Complejidad**: `O(log n)`
+  - Descripción: Se añade el elemento al final del heap y luego se realiza un "up-heap" o "bubble-up" para mantener la propiedad de heap.
+
+- **Eliminar el elemento raíz**
+  - **Complejidad**: `O(log n)`
+  - Descripción: Se elimina la raíz y se reemplaza con el último elemento, seguido de un "down-heap" o "bubble-down" para restaurar la propiedad de heap.
+
+- **Acceder al elemento raíz**
+  - **Complejidad**: `O(1)`
+  - Descripción: El elemento raíz puede ser accedido directamente sin necesidad de recorrer otros elementos.
+
+- **Buscar un elemento**
+  - **Complejidad**: `O(n)`
+  - Descripción: No hay una forma eficiente de buscar un elemento específico en un heap, ya que no se mantiene un orden total.
+
+- **Construir un heap a partir de una lista**
+  - **Complejidad**: `O(n)`
+  - Descripción: Se puede construir un heap a partir de una lista de elementos usando el algoritmo "heapify".
+
 # Resumen de Complejidad Temporal y Estructuras No Lineales - Tabla Comparativa
 | **Operations**         | **Description**                       | **Binary Tree** | **BST (Balanced)** | **BST (Unbalanced)** | **Heap**   | **Graph (Adjacency List)** | **Graph (Adjacency Matrix)** |
 | :--------------------- | :-----------------------------------: | :-------------: | :----------------: | :------------------: | :--------: | :------------------------: | :---------------------------: |

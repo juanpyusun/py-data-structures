@@ -17,13 +17,14 @@ class Graph:
             return True
         return False
     
-    def add_edge(self, vertex1, vertex2):
+    def add_edge(self, vertex1, vertex2, weight=1):
         """
-        Adds an undirected edge between two vertices in the graph.
+        Adds an undirected edge between two vertices in the graph with a weight.
 
         Parameters:
         vertex1 (hashable): The first vertex.
         vertex2 (hashable): The second vertex.
+        weight (int or float): The weight of the edge.
 
         Returns:
         bool: True if the edge was successfully added, False otherwise.
@@ -32,8 +33,8 @@ class Graph:
         Both vertices must already exist in the adjacency list for the edge to be added.
         """
         if vertex1 in self.__adjacency_list.keys() and vertex2 in self.__adjacency_list.keys():
-            self.__adjacency_list[vertex1].append(vertex2)
-            self.__adjacency_list[vertex2].append(vertex1)
+            self.__adjacency_list[vertex1].append((vertex2, weight))
+            self.__adjacency_list[vertex2].append((vertex1, weight))
             return True
         return False
         
@@ -54,8 +55,12 @@ class Graph:
         """
         if vertex1 in self.__adjacency_list.keys() and vertex2 in self.__adjacency_list.keys():
             try:
-                self.__adjacency_list[vertex1].remove(vertex2)
-                self.__adjacency_list[vertex2].remove(vertex1)
+                self.__adjacency_list[vertex1] = [
+                    (v, w) for v, w in self.__adjacency_list[vertex1] if v != vertex2
+                ]
+                self.__adjacency_list[vertex2] = [
+                    (v, w) for v, w in self.__adjacency_list[vertex2] if v != vertex1
+                ]
             except ValueError:
                 pass
             return True
@@ -73,7 +78,7 @@ class Graph:
         """
         if vertex in self.__adjacency_list.keys():
             for other_vertex in self.__adjacency_list[vertex]:
-                self.__adjacency_list[other_vertex].remove(vertex)
+                self.__adjacency_list[other_vertex[0]].remove((vertex, other_vertex[1]))
             del self.__adjacency_list[vertex]
             return True
         return False
@@ -92,4 +97,3 @@ class Graph:
         for vertex in self.__adjacency_list.keys():
             string += f"  {vertex}: {self.__adjacency_list[vertex]}\n"
         return string + "}"
-    
