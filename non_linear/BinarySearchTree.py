@@ -39,17 +39,28 @@ class Node:
 class BinarySearchTree:
     """
     BinarySearchTree is a class that implements a binary search tree (BST) data structure.
+    A binary search tree is a node-based binary tree data structure which has the following properties:
+    - The left subtree of a node contains only nodes with keys less than the node's key.
+    - The right subtree of a node contains only nodes with keys greater than the node's key.
+    - The left and right subtree each must also be a binary search tree.
     Attributes:
         __root (Node): The root node of the binary search tree.
         __length (int): The number of nodes in the binary search tree.
     Methods:
         __init__(value=None):
-        __print_level(node: Node, level: int, gap: str) -> str:
-        __get_height(node: Node) -> int:
-        insert(value: int) -> bool:
-        search(value: int) -> bool:
-        __repr__() -> str:
-        __str__() -> str:
+        __print_level(node, level, gap):
+        __get_height(node):
+        insert(value):
+        search(value):
+        __r_contains(current_node, value):
+        r_contains(value):
+        __r_insert(current_node, value):
+        r_insert(value):
+        __r_delete_node(current_node, value):
+        find_min(current_node):
+        r_delete_node(value):
+        __repr__():
+        __str__():
     """
     
     def __init__(self, value=None)->None:
@@ -173,6 +184,133 @@ class BinarySearchTree:
             elif value > current_node.value:
                 current_node = current_node.right
         return False
+    
+    def __r_contains(self, current_node: Node, value: int|str) -> bool:
+        """
+        Recursively searches for a value in the binary search tree.
+
+        Args:
+            current_node (Node): The current node being processed.
+            value (int|str): The value to search for in the tree.
+
+        Returns:
+            bool: True if the value is found in the tree, False otherwise.
+        """
+        if current_node is None:
+            return False
+        if value == current_node.value:
+            return True
+        elif value < current_node.value:
+            return self.__r_contains(current_node.left, value)
+        else:
+            return self.__r_contains(current_node.right, value)
+        
+    def r_contains(self, value: int|str) -> bool:
+        """
+        Searches for a value in the binary search tree using a recursive approach.
+
+        Args:
+            value (int|str): The value to search for in the tree.
+
+        Returns:
+            bool: True if the value is found in the tree, False otherwise.
+        """
+        return self.__r_contains(self.__root, value)
+    
+    def __r_insert(self, current_node: Node, value: int) -> bool:
+        """
+        Recursively inserts a value into the binary search tree.
+
+        Args:
+            current_node (Node): The current node being processed.
+            value (int): The value to be inserted into the tree.
+
+        Returns:
+            bool: True if the value was successfully inserted, False if the value already exists in the tree.
+        """
+        if current_node is None:
+            self.__length += 1
+            return Node(value)
+        if value < current_node.value:
+            current_node.left = self.__r_insert(current_node.left, value)
+        if value > current_node.value:
+            current_node.right = self.__r_insert(current_node.right, value)
+        return current_node            
+        
+    def r_insert(self, value: int) -> bool:
+        """
+        Recursively inserts a value into the binary search tree.
+
+        Args:
+            value (int): The value to be inserted into the tree.
+
+        Returns:
+            bool: True if the value was successfully inserted.
+        """
+        if self.__root is None:
+            self.__root = Node(value)
+        self.__r_insert(self.__root, value)
+        return True
+        
+    def __r_delete_node(self, current_node: Node, value: int) -> Node:
+        """
+        Recursively deletes a node with a given value from the binary search tree.
+
+        Args:
+            current_node (Node): The current node being processed.
+            value (int): The value of the node to be deleted.
+
+        Returns:
+            Node: The node that replaces the deleted node.
+        """
+        if current_node is None:
+            return current_node
+        if value < current_node.value:
+            current_node.left = self.__r_delete_node(current_node.left, value)
+        elif value > current_node.value:
+            current_node.right = self.__r_delete_node(current_node.right, value)
+        else:
+            if current_node.left is None and current_node.right is None:
+                return None
+            elif current_node.left is None:
+                current_node = current_node.right
+            elif current_node.right is None:
+                current_node = current_node.left
+            else:
+                sub_tree_min = self.find_min(current_node.right)
+                current_node.value = sub_tree_min
+                current_node.right = self.__r_delete_node(current_node.right, sub_tree_min)
+        return current_node
+    
+    def find_min(self, current_node: Node) -> int|str:
+        """
+        Method to find the minimum value in a subtree.
+
+        This method traverses the left children of the given node until it 
+        reaches the leftmost node, which contains the minimum value in the subtree.
+
+        Args:
+            current_node (Node): The root node of the subtree.
+
+        Returns:
+            int | str: The minimum value found in the subtree.
+        """
+        while current_node.left:
+            current_node = current_node.left
+        return current_node.value
+    
+    def r_delete_node(self, value: int) -> bool:
+        """
+        Recursively deletes a node with a given value from the binary search tree.
+
+        Args:
+            value (int): The value of the node to be deleted.
+
+        Returns:
+            bool: True if the value was successfully deleted.
+        """
+        self.__r_delete_node(self.__root, value)
+        return True
     
     def __repr__(self)->str:
         """
