@@ -1,5 +1,9 @@
 import unittest
-from non_linear.Heap import MaxHeap, MinHeap
+from non_linear.Heap import (
+    MaxHeap,
+    MinHeap,
+    find_kth_smallest,
+    stream_max)
 
 class TestMaxHeap(unittest.TestCase):
     def setUp(self):
@@ -54,6 +58,22 @@ class TestMinHeap(unittest.TestCase):
         min_value = self.min_heap.remove()
         self.assertEqual(min_value, 10)
         self.assertEqual(self.min_heap.heap, [])
+
+class TestHeapFunctions(unittest.TestCase):
+    def test_find_kth_smallest(self):
+        nums = [3, 2, 1, 5, 6, 4]
+        k = 2
+        self.assertEqual(find_kth_smallest(nums, k), 5)
+
+        nums = [3, 2, 3, 1, 2, 4, 5, 5, 6]
+        k = 4
+        self.assertEqual(find_kth_smallest(nums, k), 4)
+
+    def test_stream_max(self):
+        nums = [1, 3, 5, 7, 9, 2, 4, 6, 8, 0]
+        expected_stream = [1, 3, 5, 7, 9, 9, 9, 9, 9, 9]
+        self.assertEqual(stream_max(nums), expected_stream)
+
 
 if __name__ == '__main__':
     unittest.main()
