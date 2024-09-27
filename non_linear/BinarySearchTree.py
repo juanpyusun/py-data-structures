@@ -312,6 +312,68 @@ class BinarySearchTree:
         self.__r_delete_node(self.__root, value)
         return True
     
+    def is_balanced(self, node=None):
+        def check_balance(node):
+            if node is None:
+                return True, -1
+            left_balanced, left_height = check_balance(node.left)
+            if not left_balanced:
+                return False, 0
+            right_balanced, right_height = check_balance(node.right)
+            if not right_balanced:
+                return False, 0
+            balanced = abs(left_height - right_height) <= 1
+            height = 1 + max(left_height, right_height)
+            return balanced, height
+
+        balanced, _ = check_balance(self.__root if node is None else node)
+        return balanced
+        
+    def inorder_traversal(self, node=None):
+        if node is None:
+            node = self.__root
+        result = []
+        self._inorder_helper(node, result)
+        return result
+    
+    def _inorder_helper(self, node, result):
+        if node:
+            self._inorder_helper(node.left, result)
+            result.append(node.value)
+            self._inorder_helper(node.right, result)
+                
+    def sorted_list_to_bst(self, nums):
+        self.__root = self.__sorted_list_to_bst(nums, 0, len(nums) - 1)
+
+    def __sorted_list_to_bst(self, nums, left, right):
+        if left > right:
+            return None
+
+        mid = (left + right) // 2  # Find the middle index
+        node = Node(nums[mid])  # Create a new tree node with the middle value
+
+        # Recursively build the left and right subtrees
+        node.left = self.__sorted_list_to_bst(nums, left, mid - 1)
+        node.right = self.__sorted_list_to_bst(nums, mid + 1, right)
+
+        return node
+
+    def invert(self):
+        self.__invert_tree(self.__root)
+
+    def __invert_tree(self, node):
+        if node is None:
+            return None
+        
+        # Swap the left and right children
+        node.left, node.right = node.right, node.left
+        
+        # Recursively invert the left and right subtrees
+        self.__invert_tree(node.left)
+        self.__invert_tree(node.right)
+        
+        return node  # Return the root of the inverted tree
+
     def __repr__(self)->str:
         """
         Return a string representation of the BinarySearchTree instance.
