@@ -120,3 +120,25 @@ class MinHeap:
         self._sink_down(0)
 
         return min_value
+
+def find_kth_smallest(nums, k):
+    max_heap = MaxHeap()
+    
+    for num in nums:
+        max_heap.insert(num)
+        # Ensure the size of the heap does not exceed k
+        if len(max_heap.heap) > k:
+            max_heap.remove()
+    
+    # The root of the max heap will be the kth smallest element
+    return max_heap.remove()
+
+def stream_max(nums):
+    max_heap = MaxHeap()
+    max_stream = []
+
+    for num in nums:
+        max_heap.insert(num)  # Insert the current number into the max-heap
+        max_stream.append(max_heap.heap[0])  # The maximum is at the root of the max-heap
+
+    return max_stream
