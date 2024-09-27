@@ -313,6 +313,19 @@ class BinarySearchTree:
         return True
     
     def is_balanced(self, node=None):
+        """
+        Check if the binary search tree is balanced.
+
+        A binary search tree is considered balanced if, for every node, the height
+        difference between the left and right subtrees is no more than 1.
+
+        Args:
+            node (TreeNode, optional): The root node of the subtree to check. 
+                                       If None, the root of the entire tree is used.
+
+        Returns:
+            bool: True if the tree (or subtree) is balanced, False otherwise.
+        """
         def check_balance(node):
             if node is None:
                 return True, -1
@@ -330,6 +343,18 @@ class BinarySearchTree:
         return balanced
         
     def inorder_traversal(self, node=None):
+        """
+        Perform an in-order traversal of the binary search tree.
+
+        This method returns a list of elements in the tree in ascending order.
+
+        Args:
+            node (TreeNode, optional): The starting node for the traversal. 
+                                       If None, the traversal starts from the root of the tree.
+
+        Returns:
+            list: A list of elements in the tree in ascending order.
+        """
         if node is None:
             node = self.__root
         result = []
@@ -337,15 +362,52 @@ class BinarySearchTree:
         return result
     
     def _inorder_helper(self, node, result):
+        """
+        A helper function for performing an in-order traversal of the binary search tree.
+
+        This function recursively traverses the tree in in-order (left, root, right) and appends
+        the value of each visited node to the result list.
+
+        Args:
+            node (TreeNode): The current node being visited in the traversal.
+            result (list): The list that accumulates the values of the nodes in in-order.
+        """
         if node:
             self._inorder_helper(node.left, result)
             result.append(node.value)
             self._inorder_helper(node.right, result)
                 
     def sorted_list_to_bst(self, nums):
+        """
+        Converts a sorted list into a balanced binary search tree (BST).
+
+        This method takes a sorted list of numbers and constructs a balanced BST
+        from it. The root of the BST is stored in the instance variable `__root`.
+
+        Args:
+            nums (list): A list of numbers sorted in ascending order.
+
+        Returns:
+            None
+        """
         self.__root = self.__sorted_list_to_bst(nums, 0, len(nums) - 1)
 
     def __sorted_list_to_bst(self, nums, left, right):
+        """
+        Converts a sorted list to a balanced binary search tree (BST).
+
+        This function takes a sorted list and recursively constructs a balanced BST
+        by selecting the middle element as the root and recursively doing the same
+        for the left and right subtrees.
+
+        Args:
+            nums (List[int]): The sorted list of integers to be converted into a BST.
+            left (int): The starting index of the current sublist.
+            right (int): The ending index of the current sublist.
+
+        Returns:
+            Node: The root node of the balanced BST.
+        """
         if left > right:
             return None
 
@@ -359,9 +421,25 @@ class BinarySearchTree:
         return node
 
     def invert(self):
+        """
+        Inverts the binary search tree, swapping the left and right children
+        of all nodes in the tree.
+
+        This method calls a private helper method to perform the inversion
+        starting from the root of the tree.
+        """
         self.__invert_tree(self.__root)
 
     def __invert_tree(self, node):
+        """
+        Inverts the binary tree starting from the given node.
+        This method swaps the left and right children of each node in the tree,
+        effectively mirroring the tree.
+        Args:
+            node (TreeNode): The root node of the subtree to invert.
+        Returns:
+            TreeNode: The root node of the inverted subtree.
+        """
         if node is None:
             return None
         
