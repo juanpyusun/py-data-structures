@@ -1,8 +1,6 @@
-from typing import Optional
-    
 # Clase Max-Heap (valor maximo en la raiz)
 class MaxHeap:
-    def __init__(self, value=None)->None:
+    def __init__(self)->None:
         self.__heap = []
     
     @property
@@ -21,23 +19,23 @@ class MaxHeap:
 
     def __sink_down(self, index:int):
         max_index = index
-	  while True:
-	      left_index = self.__left_child(index)
-	      right_index = self.__right_child(index)
+        while True:
+            left_index = self.__left_child(index)
+            right_index = self.__right_child(index)
 
-		if (left_index < len(self.__heap) and
-		        self.__heap[left_index] > self.__heap[max_index]):
-		    max_index = left_index
+            if (left_index < len(self.__heap) and
+                    self.__heap[left_index] > self.__heap[max_index]):
+                max_index = left_index
 
-		if (right_index < len(self.__heap) and
-		        self.__heap[right_index] > self.__heap[max_index]):
-		    max_index = right_index
+            if (right_index < len(self.__heap) and
+                    self.__heap[right_index] > self.__heap[max_index]):
+                max_index = right_index
 
-		if max_index != index:
-		    self.__swap(index, max_index)
-		    index = max_index
-		else:
-		    return True
+            if max_index != index:
+                self.__swap(index, max_index)
+                index = max_index
+            else:
+                return True
 
     def __swap(self, index1:int, index2:int)->None:
         self.__heap[index1], self.__heap[index2] = self.__heap[index2], self.__heap[index1]
