@@ -1,40 +1,47 @@
-# Índice
-- [Índice](#índice)
-- [Definiciones de mediciones de complejidad temporal](#definiciones-de-mediciones-de-complejidad-temporal)
-- [Mediciones comunes de complejidad temporal](#mediciones-comunes-de-complejidad-temporal)
-- [Definiciones de mediciones de complejidad espacial](#definiciones-de-mediciones-de-complejidad-espacial)
-- [List](#list)
-  - [L and Big-O](#l-and-big-o)
-- [Linked List (LL)](#linked-list-ll)
-  - [LL and Big-O](#ll-and-big-o)
-- [Doubly Linked List (DLL)](#doubly-linked-list-dll)
-  - [DLL and Big-O](#dll-and-big-o)
-- [Stack (S)](#stack-s)
-  - [S and Big-O](#s-and-big-o)
-- [Queue (Q)](#queue-q)
-  - [Q and Big-O](#q-and-big-o)
-- [Resumen de Complejidad temporal y estructuras lineales - Tabla comparativa](#resumen-de-complejidad-temporal-y-estructuras-lineales---tabla-comparativa)
-  - [Notas sobre la Tabla](#notas-sobre-la-tabla)
-- [Binary Search Trees (BST)](#binary-search-trees-bst)
-  - [BST and Big-O](#bst-and-big-o)
+# Estructura de datos y algoritmos avanzados
+
+## Índice
+- [Estructura de datos y algoritmos avanzados](#estructura-de-datos-y-algoritmos-avanzados)
+  - [Índice](#índice)
+  - [Definiciones de mediciones de complejidad temporal](#definiciones-de-mediciones-de-complejidad-temporal)
+  - [Mediciones comunes de complejidad temporal](#mediciones-comunes-de-complejidad-temporal)
+  - [Definiciones de mediciones de complejidad espacial](#definiciones-de-mediciones-de-complejidad-espacial)
+  - [List](#list)
+    - [L and Big-O](#l-and-big-o)
+  - [Linked List (LL)](#linked-list-ll)
+    - [LL and Big-O](#ll-and-big-o)
+  - [Doubly Linked List (DLL)](#doubly-linked-list-dll)
+    - [DLL and Big-O](#dll-and-big-o)
+  - [Stack (S)](#stack-s)
+    - [S and Big-O](#s-and-big-o)
+  - [Queue (Q)](#queue-q)
+    - [Q and Big-O](#q-and-big-o)
+  - [Resumen de Complejidad temporal y estructuras lineales - Tabla comparativa](#resumen-de-complejidad-temporal-y-estructuras-lineales---tabla-comparativa)
+    - [Notas sobre la Tabla](#notas-sobre-la-tabla)
+  - [Binary Search Trees (BST)](#binary-search-trees-bst)
+    - [BST and Big-O](#bst-and-big-o)
   - [Otro tipo de arboles](#otro-tipo-de-arboles)
-- [Hash Table (HT)](#hash-table-ht)
-  - [HT and Big-O](#ht-and-big-o)
-- [Graph (G)](#graph-g)
-  - [G and Big-O](#g-and-big-o)
-- [Resumen de Complejidad Temporal y Estructuras No Lineales - Tabla Comparativa](#resumen-de-complejidad-temporal-y-estructuras-no-lineales---tabla-comparativa)
-  - [Consideraciones Adicionales](#consideraciones-adicionales)
+  - [Hash Table (HT)](#hash-table-ht)
+    - [HT and Big-O](#ht-and-big-o)
+  - [Graph (G)](#graph-g)
+    - [G and Big-O](#g-and-big-o)
+  - [Heap](#heap)
+    - [Heap and Big-O](#heap-and-big-o)
+  - [Resumen de Complejidad Temporal y Estructuras No Lineales - Tabla Comparativa](#resumen-de-complejidad-temporal-y-estructuras-no-lineales---tabla-comparativa)
+    - [Consideraciones Adicionales](#consideraciones-adicionales)
+  - [Recursividad](#recursividad)
+    - [Call stack](#call-stack)
 
 
 ***
 ***
 
-# Definiciones de mediciones de complejidad temporal
+## Definiciones de mediciones de complejidad temporal
 - **Big-Ω(omega):** El mejor caso posible
 - **Big-Θ(theta):** El caso promedio
 - **Big-O:** El peor caso posible
 
-# Mediciones comunes de complejidad temporal
+## Mediciones comunes de complejidad temporal
 - `O(1)`: Tiempo constante. No depende del tamaño de la entrada.
 - `O(log n)`: Tiempo logarítmico. Crece lentamente a medida que aumenta el tamaño de la entrada. Comun en la busqueda binaria (DIVIDE Y VENCERAS!)
 - `O(n)`: Tiempo lineal. Crece en proporción directa al tamaño de la entrada.
@@ -43,7 +50,7 @@
 - `O(2^n)`: Tiempo exponencial. Crece muy rápidamente con el tamaño de la entrada. Común en problemas de fuerza bruta como el problema de la mochila.
 - `O(n!)`: Tiempo factorial. Común en problemas de permutación, como el problema del vendedor viajero (TSP).
 
-# Definiciones de mediciones de complejidad espacial
+## Definiciones de mediciones de complejidad espacial
 - **Big-Ω(omega):** cota inferior para la cantidad de espacio que un algoritmo puede requerir
 - **Big-Θ(theta):** el algoritmo requiere un espacio que crece de manera proporcional tanto en el mejor como en el peor caso
 - **Big-O:** cota superior para la cantidad de espacio que un algoritmo puede requerir
@@ -51,11 +58,11 @@
 ***
 ***
 
-# List
+## List
 - **Estructura**: Espacios contiguos de memoria.
 - **Acceso**: Índice en sus elementos.
 
-## L and Big-O
+### L and Big-O
 - **Acceso a Elementos**
   - **Complejidad**: `O(1)`
   - Descripción: Las listas permiten acceso directo a elementos utilizando índices, lo que resulta en un tiempo constante para acceder a cualquier elemento.
@@ -116,7 +123,7 @@
   - **Complejidad**: `O(n)`
   - Descripción: Filtrar elementos de una lista implica iterar sobre todos los elementos y aplicar una condición, resultando en un tiempo lineal.
 
-# Linked List (LL)
+## Linked List (LL)
 - **Estructura**: Se compone de dos apuntadores y nodos conectados.
 - **Acceso**: No tienen índice los elementos.
 - **Nodo**: Un nodo se compone de valor y hacia donde está apuntando, por ejemplo, un diccionario de dos valores: `{"value": x, "next": None}`. Entonces, LL sería un conjunto de diccionarios anidados.
@@ -125,7 +132,7 @@
 - **Conexiones**: Cada nodo apunta desde la `head`, hasta el siguiente nodo, así hasta la `Tail`, es decir, de un nodo a otro solo lo conoce el nodo anterior.
 - **Tail**: El nodo de la `Tail` apunta a `None`.
 
-## LL and Big-O
+### LL and Big-O
 - **Añadir un elemento en la `Tail`**
   - **Complejidad**: `O(1)`
   - Descripción: El último elemento que apuntaba a `None`, ahora apuntará al nuevo elemento, y este apuntará a `None`, al igual que la `Tail` apuntará a este último nodo.
@@ -158,11 +165,11 @@
   - **Complejidad**: `O(n)`
   - Descripción: Se debe iterar de `Head` a `Tail` por el elemento deseado, a diferencia de las listas que se accede al elemento a través del índice, lo cual sería una complejidad constante.
 
-# Doubly Linked List (DLL)
+## Doubly Linked List (DLL)
 - **Descripción**: Una lista doblemente enlazada se compone de nodos donde cada nodo tiene tres partes: un valor, un apuntador al siguiente nodo (`next`) y un apuntador al nodo anterior (`prev`).
 - **Memoria**: Cada nodo ocupa más espacio que un nodo de una lista enlazada simple debido a los dos apuntadores.
 
-## DLL and Big-O
+### DLL and Big-O
 - **Añadir un Elemento al Final**
   - **Complejidad**: `O(1)`
   - **Descripción**: Se puede añadir un nuevo nodo al final actualizando el apuntador de la `Tail` y haciendo que el nuevo nodo apunte a `None`.
@@ -215,11 +222,11 @@
   - **Complejidad**: `O(n)`
   - **Descripción**: Filtrar elementos de una lista implica iterar a través de todos los nodos y aplicar una condición, resultando en un tiempo lineal.
 
-# Stack (S)
+## Stack (S)
 - **Descripción**: Una estructura de datos que sigue el principio LIFO (Last In, First Out), donde el último elemento añadido es el primero en ser retirado.
 - **Implementación**: Puede ser implementado utilizando arreglos o listas enlazadas.
 
-## S and Big-O
+### S and Big-O
 - **Push (Añadir un Elemento)**
   - **Complejidad**: `O(1)`
   - **Descripción**: Añadir un elemento a la parte superior de la pila es una operación constante.
@@ -240,11 +247,11 @@
   - **Complejidad**: `O(1)` (si se mantiene un contador)
   - **Descripción**: Si se mantiene un contador de elementos, contar el número de elementos es una operación constante.
 
-# Queue (Q)
+## Queue (Q)
 - **Descripción**: Una estructura de datos que sigue el principio FIFO (First In, First Out), donde el primer elemento añadido es el primero en ser retirado.
 - **Implementación**: Puede ser implementada utilizando arreglos o listas enlazadas.
 
-## Q and Big-O
+### Q and Big-O
 - **Enqueue (Añadir un Elemento)**
   - **Complejidad**: `O(1)`
   - **Descripción**: Añadir un elemento al final de la cola es una operación constante.
@@ -265,7 +272,7 @@
   - **Complejidad**: `O(1)` (si se mantiene un contador)
   - **Descripción**: Si se mantiene un contador de elementos, contar el número de elementos en la cola es una operación constante.
 
-# Resumen de Complejidad temporal y estructuras lineales - Tabla comparativa
+## Resumen de Complejidad temporal y estructuras lineales - Tabla comparativa
 | **Operation**       | **Description**                         | **Array List** | **Linked List (LL)** | **Doubly Linked List (DLL)** | **Stack** | **Queue** |
 | :------------------ | :-------------------------------------: | :------------: | :------------------: | :---------------------------: | :-------: | :-------: |
 | **Append**          | Add element at the tail                | `O(1)`        | `O(1)`               | `O(1)`                       | `O(1)`   | `O(1)`   |
@@ -280,14 +287,14 @@
 | **Enqueue**         | Add element at the rear (queue)        | N/A           | N/A                  | N/A                          | N/A      | `O(1)`   |
 | **Dequeue**         | Remove element from the front (queue)   | N/A           | N/A                  | N/A                          | N/A      | `O(1)`   |
 
-## Notas sobre la Tabla
+### Notas sobre la Tabla
 - La complejidad de las operaciones puede variar dependiendo de la implementación específica.
 - Para las listas, `N/A` indica que la operación no es aplicable.
 
 ***
 ***
 
-# Binary Search Trees (BST)
+## Binary Search Trees (BST)
 - **Estructura**: Se compone de nodos conectados de manera jerárquica mediante relaciones de padre-hijo.
 - **Nodo**: Un nodo se compone de un valor y sus hijos. En un árbol binario, por ejemplo, un nodo tiene un valor y dos apuntadores: `{"value": x, "left": None, "right": None}`.
 - **Acceso**: Los elementos no tienen índices como en una lista.
@@ -303,7 +310,7 @@
 - **Árbol binario perfecto (Perfect Binary Tree)**: Todos los nodos internos tienen exactamente 2 hijos, y todas las hojas están al mismo nivel.
 - **Árbol completo (Complete Binary Tree)**: Todos los niveles, excepto posiblemente el último, están completamente llenos, y los nodos en el último nivel se colocan de manera consecutiva de izquierda a derecha.
 
-## BST and Big-O
+### BST and Big-O
 - **Añadir un nodo**
   - **Complejidad**: `O(log n)` (árbol balanceado), `O(n)` (peor caso en árbol desbalanceado)
   - **Descripción**: Se compara el valor del nuevo nodo con los valores existentes en el árbol y se inserta en el lugar adecuado, moviéndose por el árbol de manera recursiva o iterativa.
@@ -334,7 +341,7 @@
 - **Árbol Binario de Búsqueda (BST)**: Es un árbol binario con la propiedad que para cada nodo, los valores de los nodos en el subárbol izquierdo son menores y los del subárbol derecho son mayores.
 - **Árbol AVL**: Es un BST auto-balanceado, que mantiene una altura mínima para garantizar operaciones eficientes.
 
-# Hash Table (HT)
+## Hash Table (HT)
 
 - **Estructura**: Utiliza un mecanismo de dispersión (hashing) para almacenar pares clave-valor.
 - **Acceso**: Los elementos se acceden mediante una clave única en lugar de un índice o posición.
@@ -346,7 +353,7 @@
 - **Clave Única**: Cada valor se asocia a una clave única, lo que permite acceder, insertar o eliminar elementos en tiempo constante promedio.
 - **Búsqueda**: Se basa en el hash de la clave, lo que generalmente permite un acceso rápido.
 
-## HT and Big-O
+### HT and Big-O
 
 - **Añadir un elemento**
   - **Complejidad**: `O(1)` en promedio, `O(n)` en el peor caso.
@@ -376,7 +383,7 @@
   - **Complejidad**: `O(1)` en promedio, `O(n)` en el peor caso.
   - **Descripción**: Los elementos se cargan eficientemente en la tabla, pero a medida que la tabla se llena, puede necesitarse rehashing para mantener la eficiencia.
 
-# Graph (G)
+## Graph (G)
 - **Estructura**: Un grafo se compone de nodos (o vértices) y aristas (o conexiones) que los unen.
 - **Acceso**: Los elementos (nodos) pueden ser accedidos a través de sus conexiones (aristas).
 - **Nodo**: Un nodo puede ser representado como un objeto o diccionario que contiene un valor y una lista de adyacencias, por ejemplo: `{"value": x, "edges": [y, z]}`. Entonces, un grafo sería un conjunto de nodos con sus conexiones.
@@ -387,7 +394,7 @@
   - **Adjacency Matrix**: Una matriz nxn donde cada fila y columna es un nodo, teniendo en cuenta la perspectiva de las filas, si A tiene conexion con B se pone 1 o el peso de esa arista, si todas las aristas son bidireccionales, se formara una matriz simetrica
   - **Adjacency List**: Un diccionario cuyo cada nodo es una llave y sus valores es una lista con los nodos asociados
 
-## G and Big-O
+### G and Big-O
 - **Añadir un nodo**
   - **Complejidad**: `O(1)`
   - Descripción: Se crea un nuevo nodo y se añade a la estructura del grafo (por ejemplo, a un diccionario o lista de nodos).
@@ -416,14 +423,14 @@
   - **Complejidad**: `O(V + E)`
   - Descripción: Ambos algoritmos requieren visitar cada nodo y cada arista del grafo, por lo que la complejidad es proporcional a la suma del número de nodos y aristas.
 
-# Heap
+## Heap
 - **Estructura**: Un heap es una estructura de datos en forma de árbol binario que satisface la propiedad de heap, donde cada nodo es menor (min-heap) o mayor (max-heap) que sus hijos.
 - **Acceso**: El acceso a los elementos se realiza a través de la raíz del árbol, que contiene el valor mínimo (en un min-heap) o máximo (en un max-heap).
 - **Nodos**: Cada nodo tiene un valor y apuntadores a sus nodos hijos. Por ejemplo, un nodo puede representarse como: `{"value": x, "left": None, "right": None}`.
 - **Memoria**: Generalmente se implementa usando un array o lista, donde la posición de los nodos se determina por sus índices.
 - **Propiedad de Heap**: En un min-heap, el valor de cada nodo es menor o igual que el valor de sus nodos hijos; en un max-heap, el valor de cada nodo es mayor o igual que el de sus nodos hijos.
 
-## Heap and Big-O
+### Heap and Big-O
 - **Añadir un elemento**
   - **Complejidad**: `O(log n)`
   - Descripción: Se añade el elemento al final del heap y luego se realiza un "up-heap" o "bubble-up" para mantener la propiedad de heap.
@@ -444,7 +451,7 @@
   - **Complejidad**: `O(n)`
   - Descripción: Se puede construir un heap a partir de una lista de elementos usando el algoritmo "heapify".
 
-# Resumen de Complejidad Temporal y Estructuras No Lineales - Tabla Comparativa
+## Resumen de Complejidad Temporal y Estructuras No Lineales - Tabla Comparativa
 | **Operations**         | **Description**                       | **Binary Tree** | **BST (Balanced)** | **BST (Unbalanced)** | **Heap**   | **Graph (Adjacency List)** | **Graph (Adjacency Matrix)** |
 | :--------------------- | :-----------------------------------: | :-------------: | :----------------: | :------------------: | :--------: | :------------------------: | :---------------------------: |
 | **Insert**             | Add a node                           | `O(log n)`      | `O(log n)`        | `O(n)`               | `O(log n)` | `O(1)`                    | `O(n^2)`                     |
@@ -457,6 +464,24 @@
 | **Is Empty**           | Check if the structure is empty      | `O(1)`          | `O(1)`            | `O(1)`               | `O(1)`    | `O(1)`                    | `O(1)`                       |
 | **Clear**              | Remove all nodes                     | `O(n)`          | `O(n)`            | `O(n)`               | `O(n)`    | `O(V)`                    | `O(n^2)`                     |
 
-## Consideraciones Adicionales
+### Consideraciones Adicionales
 - La complejidad de las operaciones puede variar según la implementación específica de cada estructura de datos.
 - Para grafos, la representación puede influir en la eficiencia de ciertas operaciones, como la búsqueda y el recorrido.
+
+***
+***
+
+## Recursividad
+La recursividad es una técnica de programación en la cual una función se llama a sí misma directa o indirectamente para resolver un problema. Esta técnica se utiliza comúnmente para dividir un problema complejo en subproblemas más simples y manejables. Cada llamada recursiva trabaja con una versión reducida del problema original hasta que se alcanza una condición base que detiene la recursión.
+
+- **Características Clave de la Recursividad**
+  - **Condición Base**: Una condición que detiene la recursión para evitar llamadas infinitas.
+  - **Llamada Recursiva**: La función se llama a sí misma con argumentos modificados que acercan el problema a la condición base.
+
+### Call stack
+El call stack (pila de llamadas) es una estructura de datos utilizada por los lenguajes de programación para gestionar las llamadas a funciones y los contextos de ejecución. Cada vez que se invoca una función, se crea un nuevo marco de pila (stack frame) que contiene información sobre la función, como sus parámetros, variables locales y la dirección de retorno. Este marco se apila en la parte superior del call stack. Cuando la función termina, su marco se desapila y el control se devuelve a la función llamante.
+
+- **Características Clave del Call Stack**
+  - **LIFO (Last In, First Out)**: El último marco en entrar es el primero en salir.
+  - **Gestión de Contexto**: Mantiene el contexto de ejecución de las funciones.
+  - **Recursividad**: Maneja las llamadas recursivas apilando múltiples marcos de la misma función. 

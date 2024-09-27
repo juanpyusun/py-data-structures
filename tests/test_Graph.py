@@ -1,5 +1,5 @@
 import unittest
-from Graph import Graph
+from non_linear.Graph import Graph
 
 class TestGraph(unittest.TestCase):
 

@@ -1,5 +1,5 @@
 import unittest
-from HashTable import (
+from non_linear.HashTable import (
     HashTable,
     item_in_common,
     find_duplicates,

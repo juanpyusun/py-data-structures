@@ -1,5 +1,5 @@
 import unittest
-from Stack import Stack, is_balanced_parentheses, reverse_string, sort_stack
+from linear.Stack import Stack, is_balanced_parentheses, reverse_string, sort_stack
 
 class TestStack(unittest.TestCase):
 

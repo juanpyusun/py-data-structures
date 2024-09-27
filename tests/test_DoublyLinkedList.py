@@ -1,5 +1,5 @@
 import unittest
-from DoublyLinkedList import DoublyLinkedList, Node
+from linear.DoublyLinkedList import DoublyLinkedList, Node
 
 class TestDoublyLinkedList(unittest.TestCase):
 
