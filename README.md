@@ -485,3 +485,27 @@ El call stack (pila de llamadas) es una estructura de datos utilizada por los le
   - **LIFO (Last In, First Out)**: El último marco en entrar es el primero en salir.
   - **Gestión de Contexto**: Mantiene el contexto de ejecución de las funciones.
   - **Recursividad**: Maneja las llamadas recursivas apilando múltiples marcos de la misma función. 
+
+## Breadth First Search (BFS)
+Breadth First Search (BFS) es un algoritmo de búsqueda utilizado para explorar nodos y aristas en un grafo o árbol. Comienza en un nodo raíz y explora todos los nodos vecinos en el mismo nivel antes de avanzar a los nodos en el siguiente nivel. Este enfoque es útil para encontrar el camino más corto en grafos no ponderados y se aplica en diversas áreas como redes, inteligencia artificial y resolución de problemas.
+
+### **Características Clave de BFS**
+- **Estrategia por Niveles**: Explora todos los nodos a una distancia `d` del nodo inicial antes de pasar a los nodos a una distancia `d+1`.
+- **Uso de Cola**: Utiliza una estructura de datos tipo cola `FIFO` para gestionar los nodos pendientes de exploración.
+- **Complejidad**: La complejidad temporal es `O(V + E)` y la complejidad espacial es `O(V)`.
+
+## Depth First Search (DFS)
+Depth First Search (DFS) es un algoritmo de búsqueda que explora un grafo o árbol empezando desde un nodo raíz y avanzando lo más profundo posible por cada rama antes de retroceder. Este enfoque se utiliza para recorrer o buscar elementos en estructuras de datos jerárquicas y es esencial en aplicaciones como la búsqueda de caminos, la topología de grafos y la resolución de problemas de laberintos.
+
+### **Características Clave de DFS**
+- **Estrategia de Profundidad**: Explora cada rama del grafo hasta que llega a un nodo sin hijos, luego retrocede y explora otras ramas.
+- **Uso de Pila**: Se puede implementar utilizando una pila `LIFO` o de forma recursiva, donde las llamadas recursivas funcionan como una pila implícita.
+- **Complejidad**: La complejidad temporal es `O(V + E)` y la complejidad espacial es `O(V)` en su implementación recursiva.
+
+### **Tipos de DFS**
+| Tipo de Recorrido | Orden de Visita                        | Uso Común                                |
+|-------------------|----------------------------------------|------------------------------------------|
+| Preorden          | Nodo actual → Izquierda → Derecha      | Crear copias, serializar árboles         |
+| Inorden           | Izquierda → Nodo actual → Derecha      | Obtener valores en orden ascendente (BST)|
+| Postorden         | Izquierda → Derecha → Nodo actual      | Eliminar árboles, calcular alturas       |
+
