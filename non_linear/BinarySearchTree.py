@@ -513,6 +513,37 @@ class BinarySearchTree:
 	  traverse(self.__root)
 	  return results
 
+    def is_valid_bst(self):
+        # Get the node values in in-order traversal
+        values = self.dfs_in_order()
+        
+        # Check if the values are in ascending order
+        for i in range(1, len(values)):
+            if values[i] <= values[i - 1]:  # If the current value is not greater than the previous
+                return False
+        return True
+
+    def kth_smallest(self, k):
+        self.kth_counter = 0
+        self.kth_result = None
+        
+        def traverse(current_node):
+            if current_node is None or self.kth_result is not None:
+                return
+            
+            traverse(current_node.left)
+            
+            self.kth_counter += 1
+            if self.kth_counter == k:
+                self.kth_result = current_node.value
+                return
+            
+            traverse(current_node.right)
+        
+        traverse(self.root)
+        return self.kth_result
+
+
     def __repr__(self)->str:
         """
         Return a string representation of the BinarySearchTree instance.
