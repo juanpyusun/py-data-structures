@@ -509,3 +509,70 @@ Depth First Search (DFS) es un algoritmo de búsqueda que explora un grafo o ár
 | Inorden           | Izquierda → Nodo actual → Derecha      | Obtener valores en orden ascendente (BST)|
 | Postorden         | Izquierda → Derecha → Nodo actual      | Eliminar árboles, calcular alturas       |
 
+
+***
+***
+
+## Metodos de Ordenamiento
+
+A continuación se presenta un resumen de los métodos de ordenamiento más comunes, junto con sus características y casos de uso. Al final, se incluye una tabla comparativa de complejidad temporal y espacial.
+
+### 1. Bubble Sort
+
+#### Resumen:
+El Bubble Sort es un algoritmo simple que repetidamente recorre la lista, compara elementos adyacentes y los intercambia si están en el orden incorrecto. Este proceso se repite hasta que la lista está ordenada.
+
+#### Características:
+- **Complejidad Temporal**: O(n²) en el peor y caso promedio, O(n) en el mejor (si la lista ya está ordenada).
+- **Complejidad Espacial**: O(1) (in-place).
+- **Uso**: Poco eficiente para listas grandes, se usa más como una herramienta didáctica.
+
+### 2. Selection Sort
+
+#### Resumen:
+El Selection Sort divide la lista en dos partes: la parte ordenada y la parte desordenada. Repetidamente selecciona el elemento más pequeño de la parte desordenada y lo mueve al final de la parte ordenada.
+
+#### Características:
+- **Complejidad Temporal**: O(n²) en todos los casos.
+- **Complejidad Espacial**: O(1) (in-place).
+- **Uso**: Sencillo y fácil de implementar, pero no es eficiente para listas grandes.
+
+### 3. Insertion Sort
+
+#### Resumen:
+El Insertion Sort construye una lista ordenada de manera incremental. Toma un elemento de la lista desordenada y lo inserta en la posición correcta en la lista ordenada.
+
+#### Características:
+- **Complejidad Temporal**: O(n²) en el peor y caso promedio, O(n) en el mejor.
+- **Complejidad Espacial**: O(1) (in-place).
+- **Uso**: Eficiente para listas pequeñas o casi ordenadas.
+
+### 4. Merge Sort
+
+#### Resumen:
+El Merge Sort es un algoritmo de ordenamiento basado en la técnica de Divide y Vencerás. Divide la lista en mitades, ordena cada mitad y luego las une.
+
+#### Características:
+- **Complejidad Temporal**: O(n log n) en todos los casos.
+- **Complejidad Espacial**: O(n) (no es in-place).
+- **Uso**: Muy eficiente para listas grandes y estable.
+
+### 5. Quick Sort
+
+#### Resumen:
+El Quick Sort es otro algoritmo basado en Divide y Vencerás, que selecciona un "pivote" y particiona la lista en elementos menores y mayores que el pivote, ordenando recursivamente las particiones.
+
+#### Características:
+- **Complejidad Temporal**: O(n log n) en el caso promedio, O(n²) en el peor (cuando la lista ya está ordenada o inversa).
+- **Complejidad Espacial**: O(log n) en el caso promedio (debido a la recursión).
+- **Uso**: Muy eficiente en la práctica y versátil.
+
+### Tabla Comparativa de Complejidad
+
+| Algoritmo         | Mejor Caso| Caso Promedio | Peor Caso | Complejidad Espacial|
+|-------------------|-----------|---------------|-----------|---------------------|
+| Bubble Sort       | O(n)      | O(n²)         | O(n²)     | O(1)                |
+| Selection Sort    | O(n²)     | O(n²)         | O(n²)     | O(1)                |
+| Insertion Sort    | O(n)      | O(n²)         | O(n²)     | O(1)                |
+| Merge Sort        | O(n log n)| O(n log n)    | O(n log n)| O(n)                |
+| Quick Sort        | O(n log n)| O(n log n)    | O(n²)     | O(log n)            |

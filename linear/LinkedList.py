@@ -510,6 +510,93 @@ class LinkedList:
                 current = current.next
             self.tail = current  # Set tail to the last node
 
+    def bubble_sort(self):
+        if self.head is None or self.length <= 1:
+            return  # The list is empty or has only one element, no need to sort
+        
+        for _ in range(self.length):
+            swapped = False
+            current = self.head
+            
+            while current is not None and current.next is not None:
+                # Compare the current node's value with the next node's value
+                if current.value > current.next.value:
+                    # Swap the values if they are in the wrong order
+                    current.value, current.next.value = current.next.value, current.value
+                    swapped = True  # Indicate that a swap occurred
+                
+                current = current.next
+            
+            # If no swaps occurred, the list is sorted
+            if not swapped:
+                break
+
+
+    def selection_sort(self):
+        if self.length < 2:
+            return  # The list is already sorted if it has less than 2 elements
+        
+        # Start from the head of the list
+        current = self.head
+        
+        # Iterate through the entire list
+        while current is not None:
+            # Initialize the minimum node to the current node
+            min_node = current
+            next_node = current.next
+            
+            # Find the minimum node in the unsorted part of the list
+            while next_node is not None:
+                if next_node.value < min_node.value:
+                    min_node = next_node
+                next_node = next_node.next
+            
+            # If the minimum node is not the current node, swap their values
+            if min_node != current:
+                current.value, min_node.value = min_node.value, current.value
+            
+            # Move to the next node
+            current = current.next
+
+    def insertion_sort(self):
+        if self.length < 2:
+            return  # The list is already sorted if it has less than 2 elements
+        
+        # Start with the second node as the unsorted part
+        current = self.head.next
+        sorted_head = self.head  # Initialize sorted_head to the first node
+
+        # Create a new head for the sorted part
+        sorted_list = LinkedList(sorted_head.value)
+        
+        # Iterate through each node in the unsorted part of the list
+        while current is not None:
+            next_node = current.next  # Store the next node
+            self._insert_in_sorted_list(current.value, sorted_list)
+            current = next_node  # Move to the next node
+        
+        # Update the head and tail pointers of the original linked list
+        self.head = sorted_list.head
+        self.tail = sorted_list.tail
+        self.length = sorted_list.length
+
+    def _insert_in_sorted_list(self, value, sorted_list):
+        new_node = Node(value)
+        if sorted_list.head is None or sorted_list.head.value >= new_node.value:
+            new_node.next = sorted_list.head
+            sorted_list.head = new_node
+            if sorted_list.tail is None:
+                sorted_list.tail = new_node
+        else:
+            current = sorted_list.head
+            while current.next is not None and current.next.value < new_node.value:
+                current = current.next
+            new_node.next = current.next
+            current.next = new_node
+            if new_node.next is None:  # Update the tail if new_node is the last
+                sorted_list.tail = new_node
+        sorted_list.length += 1
+
     def __str__(self)->str:
         """
         Returns a string representation of the linked list.
