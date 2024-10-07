@@ -523,8 +523,8 @@ A continuación se presenta un resumen de los métodos de ordenamiento más comu
 El Bubble Sort es un algoritmo simple que repetidamente recorre la lista, compara elementos adyacentes y los intercambia si están en el orden incorrecto. Este proceso se repite hasta que la lista está ordenada.
 
 #### Características:
-- **Complejidad Temporal**: O(n²) en el peor y caso promedio, O(n) en el mejor (si la lista ya está ordenada).
-- **Complejidad Espacial**: O(1) (in-place).
+- **Complejidad Temporal**: `O(n²)` en el peor y caso promedio, O(n) en el mejor (si la lista ya está ordenada).
+- **Complejidad Espacial**: `O(1)` (in-place).
 - **Uso**: Poco eficiente para listas grandes, se usa más como una herramienta didáctica.
 
 ### 2. Selection Sort
@@ -533,8 +533,8 @@ El Bubble Sort es un algoritmo simple que repetidamente recorre la lista, compar
 El Selection Sort divide la lista en dos partes: la parte ordenada y la parte desordenada. Repetidamente selecciona el elemento más pequeño de la parte desordenada y lo mueve al final de la parte ordenada.
 
 #### Características:
-- **Complejidad Temporal**: O(n²) en todos los casos.
-- **Complejidad Espacial**: O(1) (in-place).
+- **Complejidad Temporal**: `O(n²)` en todos los casos.
+- **Complejidad Espacial**: `O(1)` (in-place).
 - **Uso**: Sencillo y fácil de implementar, pero no es eficiente para listas grandes.
 
 ### 3. Insertion Sort
@@ -543,8 +543,8 @@ El Selection Sort divide la lista en dos partes: la parte ordenada y la parte de
 El Insertion Sort construye una lista ordenada de manera incremental. Toma un elemento de la lista desordenada y lo inserta en la posición correcta en la lista ordenada.
 
 #### Características:
-- **Complejidad Temporal**: O(n²) en el peor y caso promedio, O(n) en el mejor.
-- **Complejidad Espacial**: O(1) (in-place).
+- **Complejidad Temporal**: `O(n²)` en el peor y caso promedio, `O(n)` en el mejor.
+- **Complejidad Espacial**: `O(1)` (in-place).
 - **Uso**: Eficiente para listas pequeñas o casi ordenadas.
 
 ### 4. Merge Sort
@@ -553,8 +553,8 @@ El Insertion Sort construye una lista ordenada de manera incremental. Toma un el
 El Merge Sort es un algoritmo de ordenamiento basado en la técnica de Divide y Vencerás. Divide la lista en mitades, ordena cada mitad y luego las une.
 
 #### Características:
-- **Complejidad Temporal**: O(n log n) en todos los casos.
-- **Complejidad Espacial**: O(n) (no es in-place).
+- **Complejidad Temporal**: `O(n log n)` en todos los casos, para descomponer la lista se necesita `O(log n)`, para componer el resultado se necesita `O(n)`, de ahi surge `O(n log n)`.
+- **Complejidad Espacial**: `O(n)` (no es in-place), dado que genera `n` listas en la descomposicion.
 - **Uso**: Muy eficiente para listas grandes y estable.
 
 ### 5. Quick Sort
@@ -563,16 +563,44 @@ El Merge Sort es un algoritmo de ordenamiento basado en la técnica de Divide y 
 El Quick Sort es otro algoritmo basado en Divide y Vencerás, que selecciona un "pivote" y particiona la lista en elementos menores y mayores que el pivote, ordenando recursivamente las particiones.
 
 #### Características:
-- **Complejidad Temporal**: O(n log n) en el caso promedio, O(n²) en el peor (cuando la lista ya está ordenada o inversa).
-- **Complejidad Espacial**: O(log n) en el caso promedio (debido a la recursión).
+- **Complejidad Temporal**: `O(n log n)` en el caso promedio, `O(n²)` en el peor (cuando la lista ya está ordenada o inversa), se comportaría como el método Bubble Sort.
+- **Complejidad Espacial**: `O(log n)` en el caso promedio (debido a la recursión).
 - **Uso**: Muy eficiente en la práctica y versátil.
 
 ### Tabla Comparativa de Complejidad
 
 | Algoritmo         | Mejor Caso| Caso Promedio | Peor Caso | Complejidad Espacial|
 |-------------------|-----------|---------------|-----------|---------------------|
-| Bubble Sort       | O(n)      | O(n²)         | O(n²)     | O(1)                |
-| Selection Sort    | O(n²)     | O(n²)         | O(n²)     | O(1)                |
-| Insertion Sort    | O(n)      | O(n²)         | O(n²)     | O(1)                |
-| Merge Sort        | O(n log n)| O(n log n)    | O(n log n)| O(n)                |
-| Quick Sort        | O(n log n)| O(n log n)    | O(n²)     | O(log n)            |
+| Bubble Sort       | `O(n)`      | `O(n²)`         | `O(n²)`     | `O(1)`        |
+| Selection Sort    | `O(n²)`     | `O(n²)`         | `O(n²)`     | `O(1)`        |
+| Insertion Sort    | `O(n)`      | `O(n²)`         | `O(n²)`     | `O(1)`        |
+| Merge Sort        | `O(n log n)`| `O(n log n)`    | `O(n log n)`| `O(n)`        |
+| Quick Sort        | `O(n log n)`| `O(n log n)`    | `O(n²)`     | `O(log n)`    |
+
+***
+***
+
+## Resumen sobre Programación Dinámica
+
+La programación dinámica es una técnica de diseño de algoritmos que se utiliza para resolver problemas complejos dividiéndolos en subproblemas más simples. Es especialmente útil en situaciones donde los subproblemas se superponen y donde la solución de un problema puede construirse a partir de las soluciones de sus subproblemas.
+
+### 1. Overlapping Subproblems
+Los problemas que presentan **subproblemas superpuestos** son aquellos en los que se repiten los mismos subproblemas al resolver el problema principal. Esto significa que en lugar de resolver el mismo subproblema varias veces, se puede almacenar su resultado y reutilizarlo. Esta característica es fundamental para aplicar programación dinámica, ya que reduce el tiempo de cómputo al evitar cálculos redundantes.
+
+### 2. Optimized Substructure
+La **estructura óptima** se refiere a la propiedad que tienen ciertos problemas en los que la solución óptima del problema puede construirse a partir de las soluciones óptimas de sus subproblemas. Si un problema tiene una estructura óptima, entonces es adecuado para ser resuelto mediante programación dinámica, ya que podemos combinar soluciones de subproblemas para formar la solución del problema original.
+
+### 3. Caso - Fibonacci Sequence
+La **secuencia de Fibonacci** es un ejemplo clásico que ilustra la programación dinámica. La secuencia se define como:
+
+- `F(0) = 0`
+- `F(1) = 1`
+- `F(n) = F(n-1) + F(n-2) para n > 1`
+
+Este problema presenta subproblemas superpuestos, ya que calcular `F(n)` implica calcular `F(n-1)` y `F(n-2)`, que a su vez requieren cálculos de `F(n-2)` y `F(n-3)`, y así sucesivamente. Usar programación dinámica (ya sea con memoización o un enfoque de abajo hacia arriba) permite calcular la secuencia de Fibonacci de manera eficiente.
+
+### 4. Memoization
+La **memoización** es una técnica de optimización que consiste en almacenar los resultados de los subproblemas ya resueltos para evitar recalcularlos. Se implementa generalmente utilizando una estructura de datos como un diccionario o un arreglo. Cuando se necesita el resultado de un subproblema, se verifica si ya está almacenado. Si es así, se devuelve el resultado almacenado; si no, se calcula y se almacena para usos futuros. Esto es fundamental para mejorar la eficiencia de algoritmos recursivos que tienen subproblemas superpuestos.
+
+## 5. Bottom Up
+El enfoque **Bottom Up** es una técnica de programación dinámica que resuelve el problema construyendo soluciones a partir de subproblemas más pequeños. En lugar de resolver el problema de manera recursiva, se comienza desde los casos base y se van resolviendo los subproblemas hasta llegar a la solución del problema original. Este enfoque suele implementarse utilizando bucles, y es útil para evitar la sobrecarga de la recursión, lo que puede ser un problema en algunos casos.

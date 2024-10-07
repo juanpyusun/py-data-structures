@@ -580,6 +580,52 @@ class LinkedList:
         self.tail = sorted_list.tail
         self.length = sorted_list.length
 
+    def merge(self, other_list):
+        # If the current list is empty, just point to the other list
+        if self.head is None:
+            self.head = other_list.head
+            self.tail = other_list.tail
+            self.length = other_list.length
+            return
+
+        # If the other list is empty, do nothing
+        if other_list.head is None:
+            return
+
+        # Initialize pointers
+        current1 = self.head
+        current2 = other_list.head
+        merged_head = None
+        merged_tail = None
+
+        # Merge the two lists
+        while current1 is not None and current2 is not None:
+            if current1.value < current2.value:
+                next_node = current1
+                current1 = current1.next
+            else:
+                next_node = current2
+                current2 = current2.next
+
+            # Update the merged list
+            if merged_head is None:
+                merged_head = next_node
+                merged_tail = next_node
+            else:
+                merged_tail.next = next_node
+                merged_tail = next_node
+
+        # If any nodes remain in either list, append them
+        if current1 is not None:
+            merged_tail.next = current1
+        if current2 is not None:
+            merged_tail.next = current2
+
+        # Update the current list's head, tail, and length
+        self.head = merged_head
+        self.tail = merged_tail
+        self.length += other_list.length
+
     def _insert_in_sorted_list(self, value, sorted_list):
         new_node = Node(value)
         if sorted_list.head is None or sorted_list.head.value >= new_node.value:
