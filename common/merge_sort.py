@@ -1,7 +1,8 @@
+from typing import List, Any
 # Este metodo es distinto de los demas, dado que los demas hacen el ordenamiento in place, mientras que merge lo hace en otra lista la cual devuelve por aparte
 # necesita un helper, una funcion para hacer parte del proceso
 # list1 and list2 need to be sorted
-def merge(list1, list2):
+def merge(list1: List[Any], list2: List[Any]) -> List[Any]:
     if not list1:
         return list2
     
@@ -12,11 +13,11 @@ def merge(list1, list2):
     j = 0 # index of list2
     while i < len(list1) and j < len(list2):
         if list1[i] < list2[j]:
-    	    combined.append(list1[i])
-    	    i += 1
+            combined.append(list1[i])
+            i += 1
         else:
-    	    combined.append(list2[j])
-    	    j += 1
+            combined.append(list2[j])
+            j += 1
     while i < len(list1):
         combined.append(list1[i])
         i += 1
@@ -25,7 +26,7 @@ def merge(list1, list2):
         j += 1	  
     return combined
 
-def merge_sort(my_list):
+def merge_sort(my_list: List[Any]) -> List[Any]:
     # Paso 2: ... Hasta que se llegue al caso base when len(my_list) is 1
     if len(my_list) == 1:
         return my_list

@@ -31,6 +31,31 @@
     - [Consideraciones Adicionales](#consideraciones-adicionales)
   - [Recursividad](#recursividad)
     - [Call stack](#call-stack)
+  - [Breadth First Search (BFS)](#breadth-first-search-bfs)
+  - [Depth First Search (DFS)](#depth-first-search-dfs)
+  - [Metodos de Ordenamiento](#metodos-de-ordenamiento)
+    - [1. Bubble Sort](#1-bubble-sort)
+      - [Resumen:](#resumen)
+      - [Características:](#características)
+    - [2. Selection Sort](#2-selection-sort)
+      - [Resumen:](#resumen-1)
+      - [Características:](#características-1)
+    - [3. Insertion Sort](#3-insertion-sort)
+      - [Resumen:](#resumen-2)
+      - [Características:](#características-2)
+    - [4. Merge Sort](#4-merge-sort)
+      - [Resumen:](#resumen-3)
+      - [Características:](#características-3)
+    - [5. Quick Sort](#5-quick-sort)
+      - [Resumen:](#resumen-4)
+      - [Características:](#características-4)
+    - [Tabla Comparativa de Complejidad](#tabla-comparativa-de-complejidad)
+  - [Resumen sobre Programación Dinámica](#resumen-sobre-programación-dinámica)
+    - [1. Overlapping Subproblems](#1-overlapping-subproblems)
+    - [2. Optimized Substructure](#2-optimized-substructure)
+    - [3. Caso - Fibonacci Sequence](#3-caso---fibonacci-sequence)
+    - [4. Memoization](#4-memoization)
+    - [5. Bottom Up](#5-bottom-up)
 
 
 ***
@@ -489,20 +514,21 @@ El call stack (pila de llamadas) es una estructura de datos utilizada por los le
 ## Breadth First Search (BFS)
 Breadth First Search (BFS) es un algoritmo de búsqueda utilizado para explorar nodos y aristas en un grafo o árbol. Comienza en un nodo raíz y explora todos los nodos vecinos en el mismo nivel antes de avanzar a los nodos en el siguiente nivel. Este enfoque es útil para encontrar el camino más corto en grafos no ponderados y se aplica en diversas áreas como redes, inteligencia artificial y resolución de problemas.
 
-### **Características Clave de BFS**
-- **Estrategia por Niveles**: Explora todos los nodos a una distancia `d` del nodo inicial antes de pasar a los nodos a una distancia `d+1`.
-- **Uso de Cola**: Utiliza una estructura de datos tipo cola `FIFO` para gestionar los nodos pendientes de exploración.
-- **Complejidad**: La complejidad temporal es `O(V + E)` y la complejidad espacial es `O(V)`.
+- **Características Clave de BFS**
+  - **Estrategia por Niveles**: Explora todos los nodos a una distancia `d` del nodo inicial antes de pasar a los nodos a una distancia `d+1`.
+  - **Uso de Cola**: Utiliza una estructura de datos tipo cola `FIFO` para gestionar los nodos pendientes de exploración.
+  - **Complejidad**: La complejidad temporal es `O(V + E)` y la complejidad espacial es `O(V)`.
 
 ## Depth First Search (DFS)
 Depth First Search (DFS) es un algoritmo de búsqueda que explora un grafo o árbol empezando desde un nodo raíz y avanzando lo más profundo posible por cada rama antes de retroceder. Este enfoque se utiliza para recorrer o buscar elementos en estructuras de datos jerárquicas y es esencial en aplicaciones como la búsqueda de caminos, la topología de grafos y la resolución de problemas de laberintos.
 
-### **Características Clave de DFS**
-- **Estrategia de Profundidad**: Explora cada rama del grafo hasta que llega a un nodo sin hijos, luego retrocede y explora otras ramas.
-- **Uso de Pila**: Se puede implementar utilizando una pila `LIFO` o de forma recursiva, donde las llamadas recursivas funcionan como una pila implícita.
-- **Complejidad**: La complejidad temporal es `O(V + E)` y la complejidad espacial es `O(V)` en su implementación recursiva.
+- **Características Clave de DFS**
+  - **Estrategia de Profundidad**: Explora cada rama del grafo hasta que llega a un nodo sin hijos, luego retrocede y explora otras ramas.
+  - **Uso de Pila**: Se puede implementar utilizando una pila `LIFO` o de forma recursiva, donde las llamadas recursivas funcionan como una pila implícita.
+  - **Complejidad**: La complejidad temporal es `O(V + E)` y la complejidad espacial es `O(V)` en su implementación recursiva.
 
-### **Tipos de DFS**
+- **Tipos de DFS**
+
 | Tipo de Recorrido | Orden de Visita                        | Uso Común                                |
 |-------------------|----------------------------------------|------------------------------------------|
 | Preorden          | Nodo actual → Izquierda → Derecha      | Crear copias, serializar árboles         |
@@ -602,5 +628,5 @@ Este problema presenta subproblemas superpuestos, ya que calcular `F(n)` implica
 ### 4. Memoization
 La **memoización** es una técnica de optimización que consiste en almacenar los resultados de los subproblemas ya resueltos para evitar recalcularlos. Se implementa generalmente utilizando una estructura de datos como un diccionario o un arreglo. Cuando se necesita el resultado de un subproblema, se verifica si ya está almacenado. Si es así, se devuelve el resultado almacenado; si no, se calcula y se almacena para usos futuros. Esto es fundamental para mejorar la eficiencia de algoritmos recursivos que tienen subproblemas superpuestos.
 
-## 5. Bottom Up
+### 5. Bottom Up
 El enfoque **Bottom Up** es una técnica de programación dinámica que resuelve el problema construyendo soluciones a partir de subproblemas más pequeños. En lugar de resolver el problema de manera recursiva, se comienza desde los casos base y se van resolviendo los subproblemas hasta llegar a la solución del problema original. Este enfoque suele implementarse utilizando bucles, y es útil para evitar la sobrecarga de la recursión, lo que puede ser un problema en algunos casos.

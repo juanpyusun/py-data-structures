@@ -456,62 +456,62 @@ class BinarySearchTree:
     def BFS(self):
         current_node = self.__root
         queue = []
-	  results = []
-	  queue.append(current_node)
-	
-	  while len(queue) > 0:
-		current_node = queue.pop(0)
-		results.append(current_node.value)
+        results = []
+        queue.append(current_node)
+    
+        while len(queue) > 0:
+            current_node = queue.pop(0)
+            results.append(current_node.value)
 
-		if current_node.left:
-		    queue.append(current_node.left)
-		if current_node.right:
-		    queue.appen(current_node.right)
-	  return results
+            if current_node.left:
+                queue.append(current_node.left)
+            if current_node.right:
+                queue.append(current_node.right)
+        return results
 
     # Depth First Search Pre-Order Method
     def dfs_pre_order(self):
-	  results = []
-	
-	  # Recursive function to move on the BST
-	  def traverse(current_node):
-	      results.append(current_node.value)		
-		if current_node.left:
-		    traverse(current_node.left)
-		if current_node.right:
-		    traverse(current_node.right)
-	  
-	  # Aqui se llama la funcion recursiva
-	  traverse(self.__root)
-	  return results
+        results = []
+    
+        # Recursive function to move on the BST
+        def traverse(current_node):
+            results.append(current_node.value)        
+            if current_node.left:
+                traverse(current_node.left)
+            if current_node.right:
+                traverse(current_node.right)
+      
+        # Aqui se llama la funcion recursiva
+        traverse(self.__root)
+        return results
 
     # Depth First Search Post-Order Method
     def dfs_post_order(self):
-	  results = []
-	  
-	  def traverse(current_node):		
-		if current_node.left:
-		    traverse(current_node.left)
-		if current_node.right:
-		    traverse(current_node.right)
-		results.append(current_node.value)
-	  
-	  traverse(self.__root)
-	  return results
+        results = []
+      
+        def traverse(current_node):        
+            if current_node.left:
+                traverse(current_node.left)
+            if current_node.right:
+                traverse(current_node.right)
+            results.append(current_node.value)
+      
+        traverse(self.__root)
+        return results
 
     # Depth First Search In-Order Method
     def dfs_in_order(self):
-	  results = []
+        results = []
 
-	  def traverse(current_node):		
-		if current_node.left:
-		    traverse(current_node.left)		
-		results.append(current_node.value)
-		if current_node.right:
-		    traverse(current_node.right)
-		
-	  traverse(self.__root)
-	  return results
+        def traverse(current_node):        
+            if current_node.left:
+                traverse(current_node.left)        
+            results.append(current_node.value)
+            if current_node.right:
+                traverse(current_node.right)
+        
+        traverse(self.__root)
+        return results
 
     def is_valid_bst(self):
         # Get the node values in in-order traversal

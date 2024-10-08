@@ -61,8 +61,6 @@ class MaxHeap:
     def __str__(self)->str:
         return str(self.__heap) 
 
- 
-
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -107,7 +105,6 @@ class MinHeap:
             else:
                 return
     
-
     def remove(self):
         if len(self.heap) == 0:
             return None

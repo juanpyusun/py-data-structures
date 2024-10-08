@@ -7,7 +7,7 @@ def fib1(n):
     counter1 += 1
     if n == 0 or n == 1:
         return n
-    return fib(n - 1) + fib(n - 2)
+    return fib1(n - 1) + fib1(n - 2)
 
 # Fib recursivo (con memoization usar listas o diccionarios) - Top Down method
 def fib2(n):
@@ -17,7 +17,7 @@ def fib2(n):
         return memo[n]
     if n == 0 or n == 1:
         return n
-    memo[n] = fib(n - 1) + fib(n - 2)
+    memo[n] = fib2(n - 1) + fib2(n - 2)
     return memo[n]
 
 
@@ -34,10 +34,10 @@ def fib3(n):
 if __name__ == "__main__":
     n = 10
     print(f"Termino {n}: {fib1(n)}")
-    print(f"Se hicieron: {} llamados a la función recursiva")
+    print(f"Se hicieron: {counter1} llamados a la función recursiva")
     print("*"*10)
     print(f"Termino {n}: {fib2(n)}")
-    print(f"Se hicieron: {} llamados a la función recursiva optimizada")
+    print(f"Se hicieron: {counter2} llamados a la función recursiva optimizada")
     print("*"*10)
     print(f"Termino {n}: {fib3(n)}")
-    print(f"Se hicieron: {} llamados a la función iterativa")
+    print(f"Se hicieron: {counter3} llamados a la función iterativa")
