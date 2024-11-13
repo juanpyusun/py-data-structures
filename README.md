@@ -83,6 +83,10 @@
 ***
 ***
 
+## Array
+- **Estructura**: Espacios contiguos de memoria, similar a listas, pero generalmente de un tipo específico (homogéneas).
+- **Acceso**: Índice en sus elementos.
+
 ## List
 - **Estructura**: Espacios contiguos de memoria.
 - **Acceso**: Índice en sus elementos.
